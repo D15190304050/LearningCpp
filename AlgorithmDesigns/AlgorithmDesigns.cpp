@@ -6,6 +6,11 @@
 
 int main()
 {
+	using namespace std;
+	cout << "fine" << endl;
+
+	// Keep the console window open in debug mode.
+	system("pause");
     return 0;
 }
 
