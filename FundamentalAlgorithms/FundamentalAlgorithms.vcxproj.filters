@@ -27,8 +27,14 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="LinkedList.h">
+    <ClInclude Include="UnitTest.h">
       <Filter>源文件\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="StdRandom.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +42,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="FundamentalAlgorithms.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitTest.cpp">
+      <Filter>源文件\Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="StdRandom.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
