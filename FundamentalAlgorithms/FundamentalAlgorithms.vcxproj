@@ -147,13 +147,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="MinPriorityQueue.h" />
+    <ClInclude Include="Quick.h" />
+    <ClInclude Include="SortBase.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="StdRandom.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="UnitTest.h" />
+    <ClInclude Include="CollectionTests.h" />
+    <ClInclude Include="FunctionalityTest.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FunctionalityTest.cpp" />
     <ClCompile Include="FundamentalAlgorithms.cpp" />
+    <ClCompile Include="MinPriorityQueue.cpp" />
+    <ClCompile Include="Quick.cpp" />
+    <ClCompile Include="SortBase.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -161,7 +169,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="StdRandom.cpp" />
-    <ClCompile Include="UnitTest.cpp" />
+    <ClCompile Include="CollectionTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

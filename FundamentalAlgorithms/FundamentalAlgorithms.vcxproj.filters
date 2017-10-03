@@ -16,6 +16,9 @@
     <Filter Include="源文件\Collections">
       <UniqueIdentifier>{4ddc3381-1e1a-4c3b-bf10-07bd6ad2c8b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Sort">
+      <UniqueIdentifier>{c2a7e886-db2f-453c-ad3c-e516fdeaf7e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -27,14 +30,26 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="UnitTest.h">
-      <Filter>源文件\Collections</Filter>
-    </ClInclude>
     <ClInclude Include="StdRandom.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="LinkedList.h">
+    <ClInclude Include="FunctionalityTest.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CollectionTests.h">
+      <Filter>源文件\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="MinPriorityQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Quick.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SortBase.h">
+      <Filter>源文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>源文件\Collections</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -44,11 +59,23 @@
     <ClCompile Include="FundamentalAlgorithms.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="UnitTest.cpp">
-      <Filter>源文件\Collections</Filter>
-    </ClCompile>
     <ClCompile Include="StdRandom.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionalityTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CollectionTests.cpp">
+      <Filter>源文件\Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="MinPriorityQueue.cpp">
+      <Filter>源文件\Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="Quick.cpp">
+      <Filter>源文件\Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="SortBase.cpp">
+      <Filter>源文件\Sort</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

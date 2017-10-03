@@ -6,25 +6,16 @@
 
 namespace FundamentalAlgorithms
 {
+	StdRandom::Random::Random()
+	{
+		seed = (unsigned)time(nullptr);
+		srand(seed);
+	}
+
 	StdRandom::Random::Random(unsigned int seed)
 	{
 		this->seed = seed;
 		srand(seed);
-	}
-
-	int StdRandom::Random::NextInt()
-	{
-		return rand();
-	}
-
-	int StdRandom::Random::NextInt(int maxValue)
-	{
-		return rand() % maxValue;
-	}
-
-	double StdRandom::Random::NextDouble()
-	{
-		return rand() / ((double)RAND_MAX);
 	}
 
 	int StdRandom::Uniform(int minValue, int maxValue)
@@ -36,7 +27,7 @@ namespace FundamentalAlgorithms
 		if (((long)(maxValue - minValue)) > INT32_MAX)
 			throw length_error("Invalid range");
 
-		return minValue + random.NextInt(maxValue - minValue);
+		return minValue + Uniform(maxValue - minValue);
 	}
 
 	double StdRandom::Uniform(double minValue, double maxValue)

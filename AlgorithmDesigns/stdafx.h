@@ -16,3 +16,4 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include "StdRandom.h"

@@ -30,6 +30,15 @@
     <ClInclude Include="UnitTest.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="..\FundamentalAlgorithms\StdRandom.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TopK.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TestOption.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -39,6 +48,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="NumberOfInversions.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\FundamentalAlgorithms\StdRandom.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TopK.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -73,6 +73,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>E:\DinoStark\Computer Science\Programming Design\CppConsole2017\FundamentalAlgorithms;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\DinoStark\Computer Science\Programming Design\CppConsole2017\FundamentalAlgorithms;$(LibraryPath)</LibraryPath>
+    <ReferencePath>E:\DinoStark\Computer Science\Programming Design\CppConsole2017\FundamentalAlgorithms;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -90,6 +93,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>E:\DinoStark\Computer Science\Programming Design\CppConsole2017\FundamentalAlgorithms;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,12 +151,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\FundamentalAlgorithms\StdRandom.h" />
     <ClInclude Include="NumberOfInversions.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TestOption.h" />
+    <ClInclude Include="TopK.h" />
     <ClInclude Include="UnitTest.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\FundamentalAlgorithms\StdRandom.cpp" />
     <ClCompile Include="AlgorithmDesigns.cpp" />
     <ClCompile Include="NumberOfInversions.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -161,6 +169,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TopK.cpp" />
+    <ClCompile Include="UnitTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FundamentalAlgorithms\FundamentalAlgorithms.vcxproj">

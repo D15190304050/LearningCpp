@@ -3,19 +3,20 @@
 
 #include "stdafx.h"
 #include "LinkedList.h"
-#include "UnitTest.h"
-#include "StdRandom.h"
+#include "CollectionTests.h"
+#include "FunctionalityTest.h"
+#include "Quick.h"
 
 int main()
 {
-	using namespace FundamentalAlgorithms;
 	using namespace std;
-
-	int a[] = { 0,1,2,3,4,5,6,7,8,9 };
-	StdRandom random;
-	random.Shuffle<int>(a, 10);
-
-	for (int i : a)
+	using namespace FundamentalAlgorithms::Sort;
+	
+	int length = 10;
+	int data[] = { 2, 5, 7, 9, 8, 6, 3, 4, 1, 0 };
+	Quick quick;
+	quick.Sort(data, length);
+	for (int i : data)
 		cout << i << " ";
 	cout << endl;
 

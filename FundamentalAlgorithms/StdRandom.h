@@ -13,20 +13,20 @@ namespace FundamentalAlgorithms
 		{
 		public:
 			// The seed of this random number generator.
-			int seed;
+			unsigned int seed;
+
+			// Initializes a new random number generator with time-reveland seed.
+			Random();
 
 			// Initializes a new random number generator with specified seed.
 			// seed : The specified seed.
-			Random(unsigned int seed = (unsigned)time(nullptr));
+			Random(unsigned int seed);
 
 			// Returns a non-negative random integer between [0, 32767].
-			int NextInt();
-
-			// Returns a non-negative random integer that is less than the specified maximum.
-			int NextInt(int maxValue);
+			int NextInt() { return rand(); }
 
 			// Returns a random floating number that is greater than to equal to 0.0 and less than 1.0.
-			double NextDouble();
+			double NextDouble() { return rand() / ((double)RAND_MAX); }
 		};
 
 		// A instance of the pseudo-random number generator.
@@ -53,7 +53,7 @@ namespace FundamentalAlgorithms
 
 		// Returns a random integer number uniformly in [0,n).
 		// maxValue : Number of possibile numebrs.
-		int Uniform(int maxValue) { return random.NextInt(maxValue); }
+		int Uniform(int maxValue) { return random.NextInt() % maxValue; }
 
 		// Returns a random real number uniformly in [minValue, maxValue).
 		// minValue : The left end-point.
