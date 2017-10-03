@@ -73,9 +73,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>E:\DinoStark\Computer Science\Programming Design\CppConsole2017\FundamentalAlgorithms;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\DinoStark\Computer Science\Programming Design\CppConsole2017\FundamentalAlgorithms;$(LibraryPath)</LibraryPath>
-    <ReferencePath>E:\DinoStark\Computer Science\Programming Design\CppConsole2017\FundamentalAlgorithms;$(ReferencePath)</ReferencePath>
+    <IncludePath>Q:\DinoStark\Computer Science\Programming Design\Visual Studio 2017\CppConsole2017\FundamentalAlgorithms;E:\DinoStark\Computer Science\Programming Design\CppConsole2017\FundamentalAlgorithms;$(IncludePath)</IncludePath>
+    <LibraryPath>Q:\DinoStark\Computer Science\Programming Design\Visual Studio 2017\CppConsole2017\FundamentalAlgorithms;E:\DinoStark\Computer Science\Programming Design\CppConsole2017\FundamentalAlgorithms;$(LibraryPath)</LibraryPath>
+    <ReferencePath>Q:\DinoStark\Computer Science\Programming Design\Visual Studio 2017\CppConsole2017\FundamentalAlgorithms;E:\DinoStark\Computer Science\Programming Design\CppConsole2017\FundamentalAlgorithms;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
