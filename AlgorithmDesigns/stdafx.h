@@ -16,4 +16,4 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include "StdRandom.h"
+#include "..\FundamentalAlgorithms\StdRandom.h"

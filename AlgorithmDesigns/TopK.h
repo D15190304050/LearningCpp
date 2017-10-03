@@ -1,6 +1,6 @@
 #pragma once
 #include "stdafx.h"
-#include "StdRandom.h"
+#include "..\FundamentalAlgorithms\StdRandom.h"
 
 using namespace FundamentalAlgorithms;
 

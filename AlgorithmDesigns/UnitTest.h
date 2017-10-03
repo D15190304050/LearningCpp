@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "NumberOfInversions.h"
-#include "StdRandom.h"
+#include "..\FundamentalAlgorithms\StdRandom.h"
 #include "TestOption.h"
 
 namespace AlgorithmDesigns
