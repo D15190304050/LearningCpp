@@ -92,7 +92,7 @@ namespace AlgorithmDesigns
 		// k : The number of element to extract from cadicate data.
 		// Returns : A array that contains top-k element where k is specified by the caller.
 		template<class T>
-		T * PartitionBasedSelection(T data[], int length, int k)
+		T * PartitionBasedExtraction(T data[], int length, int k)
 		{
 			// Check length before processing.
 			LengthCheck(length, k);
@@ -140,7 +140,7 @@ namespace AlgorithmDesigns
 		// k : The number of element to extract from cadicate data.
 		// Returns : A array that contains top-k element where k is specified by the caller.
 		template<class T>
-		T * SortBasedSelection(T data[], int length, int k)
+		T * SortBasedExtraction(T data[], int length, int k)
 		{
 			using namespace FundamentalAlgorithms::Sort;
 
@@ -155,6 +155,57 @@ namespace AlgorithmDesigns
 			int * result = new int[k];
 			for (int i = 0; i < k; i++)
 				result[i] = data[length - 1 - i];
+
+			return result;
+		}
+
+		template<class T>
+		T * MinPQBasedExtraction(T data[], int length, int k)
+		{
+			using namespace FundamentalAlgorithms::Sort;
+
+			// Check the length before processing.
+			LengthCheck(length, k);
+
+			// Initialize an empty min priority queue.
+			MinPriorityQueue<T> queue;
+
+			// Declare a variable as the loop-counter.
+			int i = 0;
+
+			// Insert (k + 1) items in the source data.
+			while (i < k + 1)
+			{
+				// Add next item to the source data.
+				queue.Add(data[i]);
+
+				// Update the loop-counter;
+				i++;
+			}
+
+			// Filter the data.
+			while (i < length)
+			{
+				// Remove the min elemet from the priority queue.
+				// Because there are (k + 1) elements in the priority queue, remove the min element will make sure that
+				// the current top-k elements are still in the priority queue.
+				queue.DeleteMin();
+
+				// Add next item in the source data.
+				queue.Add(data[i]);
+
+				// Update the loop-counter.
+				i++;
+			}
+
+			// For now, we have the top-(k+1) elements in the priority queue.
+			// We can get the top-k elements by calling the DeleteMin() method again.
+			queue.DeleteMin();
+
+			// Extract the top-k elements from the priority queue.
+			T * result = new int[k];
+			for (i = 0; i < k; i++)
+				result[k - 1 - i] = queue.DeleteMin();
 
 			return result;
 		}
