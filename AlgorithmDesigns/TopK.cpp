@@ -1,7 +1,6 @@
 #pragma once
 #include "stdafx.h"
 #include "TopK.h"
-#include "Quick.h"
 #include <stdexcept>
 
 namespace AlgorithmDesigns
