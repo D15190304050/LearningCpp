@@ -15,6 +15,7 @@ namespace AlgorithmDesigns
 		// Unit test function for the NumberOfInversions class.
 		static void NoiUnitTest();
 
+		// Functionality test function for the TopK class.
 		static void TopKFunctionalityTest(TestOption option = TestOption::DefaultIntArray, int specifiedArray[] = nullptr, int length = 10, int k = 5);
 	};
 }
