@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "TopK.h"
+#include "Quick.h"
 #include <stdexcept>
 
 namespace AlgorithmDesigns
@@ -13,14 +14,16 @@ namespace AlgorithmDesigns
 			throw runtime_error("The length of the source data must be larger than k.");
 	}
 
-	void TopK::Swap(int a[], int i, int j)
+	template<class T>
+	void TopK::Swap(T a[], int i, int j)
 	{
-		int temp = a[i];
+		T temp = a[i];
 		a[i] = a[j];
 		a[j] = temp;
 	}
 
-	int TopK::Partition(int a[], int low, int high)
+	template<class T>
+	int TopK::Partition(T a[], int low, int high)
 	{
 		// Left and right scan indicies.
 		int left = low;
@@ -94,6 +97,25 @@ namespace AlgorithmDesigns
 				break;
 		}
 
+		int * result = new int[k];
+		for (int i = 0; i < k; i++)
+			result[i] = data[length - 1 - i];
+
+		return result;
+	}
+
+	int * TopK::SortBasedSelection(int data[], int length, int k)
+	{
+		using namespace FundamentalAlgorithms::Sort;
+
+		// Check the length before processing.
+		LengthCheck(length, k);
+
+		// Sort the data.
+		Quick quick;
+		quick.Sort(data, length);
+
+		// Extract top-k elements.
 		int * result = new int[k];
 		for (int i = 0; i < k; i++)
 			result[i] = data[length - 1 - i];

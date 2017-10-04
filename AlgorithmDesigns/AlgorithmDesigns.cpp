@@ -8,9 +8,9 @@ int main()
 {
 	using namespace AlgorithmDesigns;
 
-	/*AlgorithmTests::TopKFunctionalityTest();*/
+	AlgorithmTests::TopKFunctionalityTest();
 
-	AlgorithmTests::NoiUnitTest();
+	//AlgorithmTests::NoiUnitTest();
 
 	// Keep the console window open in debug mode.
 	system("pause");

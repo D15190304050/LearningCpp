@@ -51,6 +51,9 @@
     <ClInclude Include="LinkedList.h">
       <Filter>源文件\Collections</Filter>
     </ClInclude>
+    <ClInclude Include="SortTest.h">
+      <Filter>源文件\Sort</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -75,6 +78,9 @@
       <Filter>源文件\Sort</Filter>
     </ClCompile>
     <ClCompile Include="SortBase.cpp">
+      <Filter>源文件\Sort</Filter>
+    </ClCompile>
+    <ClCompile Include="SortTest.cpp">
       <Filter>源文件\Sort</Filter>
     </ClCompile>
   </ItemGroup>

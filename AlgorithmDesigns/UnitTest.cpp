@@ -61,12 +61,23 @@ namespace AlgorithmDesigns
 		// The array that contains the deep copy of the sourceData.
 		int * data = new int[length];
 
-		// Test the PartitionBasedSelection() method.
+		// Test the PartitionBasedSelection() function.
+		// Make a deep copy of the source data because the sort operation will change the array.
+		cout << "Test for the PartitionBasedSelection() function." << endl;
+		for (int i = 0; i < length; i++)
+			data[i] = sourceData[i];
+		result = topk.PartitionBasedSelection(data, length, k);
+		for (int i = 0; i < k; i++)
+			cout << result[i] << " ";
+		cout << endl;
+		delete[] result;
+
+		// Test the SortBasedSelection() function.
 		// Make a deep copy of the source data because the sort operation will change the array.
 		cout << "Test for the SortBasedSelection() function." << endl;
 		for (int i = 0; i < length; i++)
 			data[i] = sourceData[i];
-		result = topk.PartitionBasedSelection(data, length, k);
+		result = topk.SortBasedSelection(data, length, k);
 		for (int i = 0; i < k; i++)
 			cout << result[i] << " ";
 		cout << endl;
