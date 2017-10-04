@@ -1,7 +1,6 @@
 #pragma once
 #include "stdafx.h"
 #include "NumberOfInversions.h"
-#include "..\FundamentalAlgorithms\StdRandom.h"
 #include "TestOption.h"
 
 namespace AlgorithmDesigns
@@ -17,5 +16,8 @@ namespace AlgorithmDesigns
 
 		// Functionality test function for the TopK class.
 		static void TopKFunctionalityTest(TestOption option = TestOption::DefaultIntArray, int specifiedArray[] = nullptr, int length = 10, int k = 5);
+
+		// Unit test function for the TopK class.
+		static void TopKUnitTest();
 	};
 }

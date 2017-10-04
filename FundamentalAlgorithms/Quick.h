@@ -6,11 +6,19 @@ namespace FundamentalAlgorithms
 {
 	namespace Sort
 	{
+		// The Quick class provides member function for sorting an array.
 		class Quick
 		{
 		private:
+			// A random number generator.
 			StdRandom random;
 
+			// Partitions the sub-array a[low ... high] so that a[low ... right-1] <= a[right] <= a[right+1 ... high]
+			// and returns the index right.
+			// T : A generic type that is Comparable.
+			// a : The array to be sorted.
+			// low : The lower limit of this sub-array.
+			// high : The upper limit of this sub-array.
 			template<class T>
 			static int Partition(T a[], int low, int high)
 			{
@@ -52,6 +60,11 @@ namespace FundamentalAlgorithms
 				return right;
 			}
 
+			// Quick sort the sub-array from a[low] to a[high].
+			// T : A generic type that is Comparable.
+			// a : The array to be sorted.
+			// low : The lower limit of this sub-array.
+			// high : The upper limit of this sub-array.
 			template<class T>
 			static void Sort(T a[], int low, int high)
 			{
@@ -69,9 +82,16 @@ namespace FundamentalAlgorithms
 			}
 
 		public:
+			// Initializes a new quick sort solver.
 			Quick() { random = StdRandom(); }
+
+			// Destructor.
 			~Quick() {}
 
+			// Re-arranges the array in ascending order.
+			// T : A generity type that is Comparable.
+			// a : The array to be sorted.
+			// length : The length of the input array.
 			template<class T>
 			void Sort(T a[], int length)
 			{

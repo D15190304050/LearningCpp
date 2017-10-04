@@ -10,6 +10,7 @@ namespace FundamentalAlgorithms
 		using namespace FundamentalAlgorithms;
 		using namespace std;
 
+		cout << "Test for the shuffling operation:" << endl;
 		int a[] = { 0,1,2,3,4,5,6,7,8,9 };
 		cout << "Test for shuffling operation:" << endl;
 		cout << "The original array is: ";

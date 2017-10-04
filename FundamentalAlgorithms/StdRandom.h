@@ -16,11 +16,19 @@ namespace FundamentalAlgorithms
 			unsigned int seed;
 
 			// Initializes a new random number generator with time-reveland seed.
-			Random();
+			Random()
+			{
+				seed = (unsigned)time(nullptr);
+				srand(seed);
+			}
 
 			// Initializes a new random number generator with specified seed.
 			// seed : The specified seed.
-			Random(unsigned int seed);
+			Random(unsigned int seed)
+			{
+				this->seed = seed;
+				srand(seed);
+			}
 
 			// Returns a non-negative random integer between [0, 32767].
 			int NextInt() { return rand(); }

@@ -41,6 +41,7 @@ namespace AlgorithmDesigns
 			data[i] = i;
 		random.Shuffle(data, length);
 		NoiFunctionalityTest(data, length);
+		delete[] data;
 	}
 
 	void AlgorithmTests::TopKFunctionalityTest(TestOption option, int specifiedArray[], int length, int k)
@@ -49,7 +50,7 @@ namespace AlgorithmDesigns
 		TopK topk;
 
 		// Generate the data for the test.
-		int * sourceData;
+		int * sourceData = nullptr;
 		if (option == TestOption::DefaultIntArray)
 			sourceData = new int[10]{ 4, 5, 6, 9, 8, 7, 1, 2, 3, 0 };
 		else
@@ -84,6 +85,23 @@ namespace AlgorithmDesigns
 		delete[] result;
 
 		// Release memory.
+		delete[] data;
+	}
+
+	void AlgorithmTests::TopKUnitTest()
+	{
+		// Test with default settings.
+		TopKFunctionalityTest();
+
+		// Test with specified data.
+		StdRandom random;
+		int length = 100;
+		int k = 10;
+		int * data = new int[length];
+		for (int i = 0; i < length; i++)
+			data[i] = i;
+		random.Shuffle(data, length);
+		TopKFunctionalityTest(TestOption::SpecifiedArray, data, length, k);
 		delete[] data;
 	}
 }

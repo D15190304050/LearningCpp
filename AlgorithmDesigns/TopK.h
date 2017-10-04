@@ -21,7 +21,7 @@ namespace AlgorithmDesigns
 		static void LengthCheck(int dataLength, int k);
 
 		// Swaps elements in the specified array with specified indicies.
-		// T : A generic type that implements the operator<().
+		// T : A generic type that is Comparable.
 		// a : The array that contains the elements to swap.
 		// i : The index of the element to swap.
 		// j : The other index of the element to swap.
@@ -35,7 +35,7 @@ namespace AlgorithmDesigns
 
 		// Partion the sub-array array[low .. high] so that array[low .. j-1] &lt;= array[j] &lt;= array[j+1 .. high]
 		// and return the index j, which is the correct index of the partitioning item.
-		// T : A generic type that implements the operator<().
+		// T : A generic type that is Comparable.
 		// a : The array to partition.
 		// low : The min index of the sub-array.
 		// high : The max index of the sub-array.
@@ -71,6 +71,7 @@ namespace AlgorithmDesigns
 				if (right <= left)
 					break;
 
+				// Swap them.
 				Swap(a, left, right);
 			}
 
@@ -86,7 +87,7 @@ namespace AlgorithmDesigns
 		TopK() { random = StdRandom(); }
 
 		// Sloves the top-k problem by partitioning the data.
-		// T : A generic type that implements the operator<().
+		// T : A generic type that is Comparable.
 		// data : The array that contains the candicate data.
 		// k : The number of element to extract from cadicate data.
 		// Returns : A array that contains top-k element where k is specified by the caller.
@@ -134,7 +135,7 @@ namespace AlgorithmDesigns
 		}
 
 		// Solves the top-k problem by sorting the data.
-		// T : A generic type that implements the operator<().
+		// T : A generic type that is Comparable.
 		// data : The array that contains the candicate data.
 		// k : The number of element to extract from cadicate data.
 		// Returns : A array that contains top-k element where k is specified by the caller.

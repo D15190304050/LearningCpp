@@ -136,9 +136,11 @@ namespace FundamentalAlgorithms
 			{
 				using namespace std;
 
+				// Throw an exception if this priority queue is empty when called.
 				if (count == 0)
 					throw underflow_error("Priority queue underflow");
 
+				// Return the min element on this priority queue.
 				return priorityQueue[1];
 			}
 
@@ -161,16 +163,24 @@ namespace FundamentalAlgorithms
 			{
 				using namespace std;
 
+				// Throw an exception if this priority queue is empty when called.
 				if (count == 0)
 					throw underflow_error("Priority queue underflow");
 
+				// Swap the min item with the last item on the priority queue.
 				Swap(1, count);
+
+				// Get the min item and decrease the item count, so that this priority queue will not access the min item.
 				TKey min = priorityQueue[count--];
+
+				// Sink the item at the root.
 				Sink(1);
 
+				// Resize this priority queue if necessary.
 				if ((count > 0) && (count <= (length - 1) / 4))
 					Resize(length / 2);
 
+				// Return the min element.
 				return min;
 			}
 		};

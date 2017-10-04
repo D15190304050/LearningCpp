@@ -6,18 +6,6 @@
 
 namespace FundamentalAlgorithms
 {
-	StdRandom::Random::Random()
-	{
-		seed = (unsigned)time(nullptr);
-		srand(seed);
-	}
-
-	StdRandom::Random::Random(unsigned int seed)
-	{
-		this->seed = seed;
-		srand(seed);
-	}
-
 	int StdRandom::Uniform(int minValue, int maxValue)
 	{
 		using namespace std;
