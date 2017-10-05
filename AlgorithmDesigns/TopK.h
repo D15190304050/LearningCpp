@@ -159,6 +159,11 @@ namespace AlgorithmDesigns
 			return result;
 		}
 
+		// Solves the top-k problem by using a min priority queue.
+		// T : A generic type that is Comparable.
+		// data : The array that contains the candicate data.
+		// k : The number of element to extract from cadicate data.
+		// Returns : A array that contains top-k element where k is specified by the caller.
 		template<class T>
 		T * MinPQBasedExtraction(T data[], int length, int k)
 		{
