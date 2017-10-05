@@ -47,6 +47,9 @@ namespace AlgorithmDesigns
 	void AlgorithmTests::TopKFunctionalityTest(TestOption option, int specifiedArray[], int length, int k)
 	{
 		using namespace std;
+		using namespace FundamentalAlgorithms::Sort;
+
+		// Initialize a TopK solver.
 		TopK topk;
 
 		// Generate the data for the test.
@@ -87,6 +90,14 @@ namespace AlgorithmDesigns
 		// Test the MinPQBasedExtraction() function.
 		cout << "Test for the MinPQBasedExtraction() function" << endl;
 		result = topk.MinPQBasedExtraction(sourceData, length, k);
+		for (int i = 0; i < k; i++)
+			cout << result[i] << " ";
+		cout << endl;
+		delete[] result;
+
+		// Test the MinPQBasedExtraction2() function.
+		cout << "Test for the MinPQBasedExtraction2() function" << endl;
+		result = topk.MinPQBasedExtraction2(sourceData, length, k);
 		for (int i = 0; i < k; i++)
 			cout << result[i] << " ";
 		cout << endl;

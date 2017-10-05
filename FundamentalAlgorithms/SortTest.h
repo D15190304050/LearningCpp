@@ -14,26 +14,13 @@ namespace FundamentalAlgorithms
 			static void QuickSortFunctionalityTest();
 			
 			// Functionality test function for the MinPriorityQueue class.
-			static void MinPQFunctionalityTest()
-			{
-				using namespace std;
+			static void MinPQFunctionalityTest();
 
-				cout << "Test for strings:" << endl;
-				int length = 6;
-				string strings[] = { "123", "456", "789", "111", "222", "333" };
-				MinPriorityQueue<string> pqString(strings, length);
-				while (!pqString.IsEmpty())
-					cout << pqString.DeleteMin() << endl;
+			// Functionality test function for the insertion sort algorithm.
+			static void InsertionSortFunctionalityTest();
 
-				cout << "Test for int array:" << endl;
-				int integers[] = { 3, 5, 4, 6, 2, 1 };
-				MinPriorityQueue<int> pqInt;
-				for (int i : integers)
-					pqInt.Add(i);
-				while (!pqInt.IsEmpty())
-					cout << pqInt.DeleteMin() << " ";
-				cout << endl;
-			}
+			// Functionality test function for the insertion sort algorithm.
+			static void MergeSortFunctionalityTest();
 		};
 	}
 }

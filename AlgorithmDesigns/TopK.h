@@ -3,6 +3,7 @@
 #include "..\FundamentalAlgorithms\StdRandom.h"
 #include "..\FundamentalAlgorithms\Quick.h"
 #include "..\FundamentalAlgorithms\MinPriorityQueue.h"
+#include "..\FundamentalAlgorithms\Merge.h"
 
 using namespace FundamentalAlgorithms;
 
@@ -86,6 +87,9 @@ namespace AlgorithmDesigns
 		// Initializes a new instance of the TopK class.
 		TopK() { random = StdRandom(); }
 
+		// Destructor.
+		~TopK() {}
+
 		// Sloves the top-k problem by partitioning the data.
 		// T : A generic type that is Comparable.
 		// data : The array that contains the candicate data.
@@ -94,6 +98,8 @@ namespace AlgorithmDesigns
 		template<class T>
 		T * PartitionBasedExtraction(T data[], int length, int k)
 		{
+			using namespace FundamentalAlgorithms::Sort;
+
 			// Check length before processing.
 			LengthCheck(length, k);
 
@@ -104,9 +110,6 @@ namespace AlgorithmDesigns
 			int low = 0;
 			int high = length - 1;
 
-			// Make a deep copy of k, because the length of the remaining elements to
-			int remainingCount = k;
-
 			// Loop until get some element partitioned with index (data.Length - k).
 			for (;;)
 			{
@@ -115,12 +118,9 @@ namespace AlgorithmDesigns
 
 				// Update the partition range if the index of the partitioned element is not data.Length - k,
 				// break otherwise.
-				if (partitionedIndex > high - remainingCount)
-				{
-					remainingCount = remainingCount - (high - partitionedIndex + 1);
+				if (partitionedIndex > length - k)
 					high = partitionedIndex - 1;
-				}
-				else if (partitionedIndex < high - remainingCount)
+				else if (partitionedIndex < length - k)
 					low = partitionedIndex + 1;
 				else
 					break;
@@ -130,6 +130,16 @@ namespace AlgorithmDesigns
 			int * result = new int[k];
 			for (int i = 0; i < k; i++)
 				result[i] = data[length - 1 - i];
+
+			// Merge sort the extracted elements.
+			Merge::Sort(result, k);
+
+			// Reverse the order of the sorted elements.
+			T * reverse = new T[k];
+			for (int i = 0; i < k; i++)
+				reverse[i] = result[k - 1 - i];
+			delete[] result;
+			result = reverse;
 
 			return result;
 		}
@@ -209,6 +219,61 @@ namespace AlgorithmDesigns
 
 			// Extract the top-k elements from the priority queue.
 			T * result = new int[k];
+			for (i = 0; i < k; i++)
+				result[k - 1 - i] = queue.DeleteMin();
+
+			return result;
+		}
+
+		// Solves the top-k problem by using a min priority queue.
+		// T : A generic type that is Comparable.
+		// data : The array that contains the candicate data.
+		// k : The number of element to extract from cadicate data.
+		// Returns : A array that contains top-k element where k is specified by the caller.
+		template<class T>
+		T * MinPQBasedExtraction2(T data[], int length, int k)
+		{
+			using namespace FundamentalAlgorithms::Sort;
+
+			// Check the length before processing.
+			LengthCheck(length, k);
+
+			// Initialize an empty min priority queue.
+			MinPriorityQueue<T> queue;
+
+			// Declare a variable as the loop-counter.
+			int i = 0;
+
+			// Insert k item into the priorityqueue.
+			while (i < k)
+			{
+				// Add next item to the priority queue.
+				queue.Add(data[i]);
+
+				// Update the loop-counter.
+				i++;
+			}
+
+			// Filter the data.
+			while (i < length)
+			{
+				// Get the min element on the priority queue.
+				T min = queue.Min();
+
+				// Remove the min element if it is less than the next item in the input array.
+				// And then add the item to the priority queue.
+				if (min < data[i])
+				{
+					queue.DeleteMin();
+					queue.Add(data[i]);
+				}
+
+				// Update the loop-counter.
+				i++;
+			}
+
+			// Extract the top-k elements from the priority queue.
+			T * result = new T[k];
 			for (i = 0; i < k; i++)
 				result[k - 1 - i] = queue.DeleteMin();
 

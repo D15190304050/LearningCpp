@@ -14,7 +14,9 @@ int main()
 	using namespace FundamentalAlgorithms::Sort;
 	
 	//SortTest::QuickSortFunctionalityTest();
-	SortTest::MinPQFunctionalityTest();
+	//SortTest::MinPQFunctionalityTest();
+	SortTest::InsertionSortFunctionalityTest();
+	SortTest::MergeSortFunctionalityTest();
 
 	// Keep the console window open in debug mode.
 	system("pause");

@@ -39,12 +39,6 @@
     <ClInclude Include="CollectionTests.h">
       <Filter>源文件\Collections</Filter>
     </ClInclude>
-    <ClInclude Include="MinPriorityQueue.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Quick.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="SortBase.h">
       <Filter>源文件\Sort</Filter>
     </ClInclude>
@@ -52,6 +46,18 @@
       <Filter>源文件\Collections</Filter>
     </ClInclude>
     <ClInclude Include="SortTest.h">
+      <Filter>源文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Quick.h">
+      <Filter>源文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="MinPriorityQueue.h">
+      <Filter>源文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Merge.h">
+      <Filter>源文件\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="Insertion.h">
       <Filter>源文件\Sort</Filter>
     </ClInclude>
   </ItemGroup>

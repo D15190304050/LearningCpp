@@ -78,6 +78,9 @@ namespace AlgorithmDesigns
 			*count += MergeArray(data, auxiliary, low, middle, high);
 		}
 
+		// The NumberOfInversions class shouldn't be instantiated.
+		NumberOfInversions() {}
+
 	public:
 		// Solves the number of inversions problem using merge sort.
 		// T : A generic type that is Comparable.
