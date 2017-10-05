@@ -6,6 +6,7 @@ namespace FundamentalAlgorithms
 {
 	namespace Sort
 	{
+		// The Insertion class provides static methods for sorting an array using insertion sort.
 		class Insertion
 		{
 		private:

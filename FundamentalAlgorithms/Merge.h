@@ -5,6 +5,7 @@ namespace FundamentalAlgorithms
 {
 	namespace Sort
 	{
+		// The Merge class provides static methods for sorting an array using merge sort.
 		class Merge
 		{
 		private:
