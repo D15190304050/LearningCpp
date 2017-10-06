@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AlgorithmDesigns", "Algorit
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FundamentalAlgorithms", "FundamentalAlgorithms\FundamentalAlgorithms.vcxproj", "{9FA43DE7-5F10-4FC8-B1B5-C1FCD26F5782}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataAccess", "DataAccess\DataAccess.vcxproj", "{8860A006-9AB7-4984-9CA0-D5B2EDAA601C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{9FA43DE7-5F10-4FC8-B1B5-C1FCD26F5782}.Release|x64.Build.0 = Release|x64
 		{9FA43DE7-5F10-4FC8-B1B5-C1FCD26F5782}.Release|x86.ActiveCfg = Release|Win32
 		{9FA43DE7-5F10-4FC8-B1B5-C1FCD26F5782}.Release|x86.Build.0 = Release|Win32
+		{8860A006-9AB7-4984-9CA0-D5B2EDAA601C}.Debug|x64.ActiveCfg = Debug|x64
+		{8860A006-9AB7-4984-9CA0-D5B2EDAA601C}.Debug|x64.Build.0 = Debug|x64
+		{8860A006-9AB7-4984-9CA0-D5B2EDAA601C}.Debug|x86.ActiveCfg = Debug|Win32
+		{8860A006-9AB7-4984-9CA0-D5B2EDAA601C}.Debug|x86.Build.0 = Debug|Win32
+		{8860A006-9AB7-4984-9CA0-D5B2EDAA601C}.Release|x64.ActiveCfg = Release|x64
+		{8860A006-9AB7-4984-9CA0-D5B2EDAA601C}.Release|x64.Build.0 = Release|x64
+		{8860A006-9AB7-4984-9CA0-D5B2EDAA601C}.Release|x86.ActiveCfg = Release|Win32
+		{8860A006-9AB7-4984-9CA0-D5B2EDAA601C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
