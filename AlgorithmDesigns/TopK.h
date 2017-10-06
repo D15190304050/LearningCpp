@@ -127,7 +127,7 @@ namespace AlgorithmDesigns
 			}
 
 			// Extract top-k elements.
-			int * result = new int[k];
+			int * result = new T[k];
 			for (int i = 0; i < k; i++)
 				result[i] = data[length - 1 - i];
 
@@ -162,7 +162,7 @@ namespace AlgorithmDesigns
 			quick.Sort(data, length);
 
 			// Extract top-k elements.
-			int * result = new int[k];
+			T * result = new T[k];
 			for (int i = 0; i < k; i++)
 				result[i] = data[length - 1 - i];
 
@@ -218,7 +218,7 @@ namespace AlgorithmDesigns
 			queue.DeleteMin();
 
 			// Extract the top-k elements from the priority queue.
-			T * result = new int[k];
+			T * result = new T[k];
 			for (i = 0; i < k; i++)
 				result[k - 1 - i] = queue.DeleteMin();
 

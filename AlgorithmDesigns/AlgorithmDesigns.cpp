@@ -11,24 +11,8 @@ int main()
 	using namespace std;
 	using namespace AlgorithmDesigns;
 
-	// Get the length of the input array.
-	int length;
-	cout << "Please enter the length of the input array: ";
-	cin >> length;
-
-	// Get the array.
-	cout << "Please enter the array in a line separated by space." << endl;
-	int * testData = new int[length];
-	for (int i = 0; i < length; i++)
-		cin >> testData[i];
-
-	// Get the k.
-	cout << "Please enter the k:";
-	int k;
-	cin >> k;
-
-	// Test the TopK algorithm.
-	AlgorithmTests::TopKFunctionalityTest(TestOption::SpecifiedArray, testData, length, k);
+	//AlgorithmTests::TopKUnitTest();
+	//AlgorithmTests::TopKStandardTest();
 
 	// Keep the console window open in debug mode.
 	system("pause");

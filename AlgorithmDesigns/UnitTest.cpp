@@ -123,4 +123,28 @@ namespace AlgorithmDesigns
 		TopKFunctionalityTest(TestOption::SpecifiedArray, data, length, k);
 		delete[] data;
 	}
+
+	void AlgorithmTests::TopKStandardTest()
+	{
+		using namespace std;
+
+		// Get the length of the input array.
+		int length;
+		cout << "Please enter the length of the input array: ";
+		cin >> length;
+
+		// Get the array.
+		cout << "Please enter the array in a line separated by space." << endl;
+		int * testData = new int[length];
+		for (int i = 0; i < length; i++)
+			cin >> testData[i];
+
+		// Get the k.
+		cout << "Please enter the k: ";
+		int k;
+		cin >> k;
+
+		// Test the TopK algorithm.
+		AlgorithmTests::TopKFunctionalityTest(TestOption::SpecifiedArray, testData, length, k);
+	}
 }

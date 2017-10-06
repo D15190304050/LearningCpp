@@ -19,5 +19,8 @@ namespace AlgorithmDesigns
 
 		// Unit test function for the TopK class.
 		static void TopKUnitTest();
+
+		// Standard functionality and correctness test for the TopK class.
+		static void TopKStandardTest();
 	};
 }
