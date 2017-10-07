@@ -16,3 +16,6 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <sstream>
+#include <stdexcept>
+#include <mysql.h>
