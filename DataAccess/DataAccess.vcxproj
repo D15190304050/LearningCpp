@@ -168,8 +168,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\Data Base\MySQL\VS2017下C++连接到MySQL 5.7(x64).docx" />
-    <None Include="..\..\..\Data Base\MySQL\VS2017下C++连接到MySQL 5.7(x64).pdf" />
     <None Include="C:\Program Files\MySQL\MySQL Server 5.7\lib\libmysql.dll" />
   </ItemGroup>
   <ItemGroup>

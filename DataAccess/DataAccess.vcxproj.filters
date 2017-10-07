@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Description">
-      <UniqueIdentifier>{75d8082e-93bd-4820-97f8-5dc26746c3c5}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -44,12 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="C:\Program Files\MySQL\MySQL Server 5.7\lib\libmysql.dll" />
-    <None Include="..\..\..\Data Base\MySQL\VS2017下C++连接到MySQL 5.7(x64).docx">
-      <Filter>Description</Filter>
-    </None>
-    <None Include="..\..\..\Data Base\MySQL\VS2017下C++连接到MySQL 5.7(x64).pdf">
-      <Filter>Description</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Library Include="C:\Program Files\MySQL\MySQL Server 5.7\lib\libmysql.lib" />
