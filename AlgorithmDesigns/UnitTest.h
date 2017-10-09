@@ -22,5 +22,8 @@ namespace AlgorithmDesigns
 
 		// Standard functionality and correctness test for the TopK class.
 		static void TopKStandardTest();
+
+		// Functionality test function for the AccumulateNumbers class.
+		static void AccumulateNumbersFunctionalityTest();
 	};
 }

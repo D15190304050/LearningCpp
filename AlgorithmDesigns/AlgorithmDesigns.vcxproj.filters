@@ -36,6 +36,9 @@
     <ClInclude Include="TestOption.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="AccumlateNumbers.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -51,6 +54,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="TopK.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AccumlateNumbers.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "UnitTest.h"
 #include "TopK.h"
+#include "AccumlateNumbers.h"
 #include <algorithm>
 
 int main()
@@ -11,8 +12,11 @@ int main()
 	using namespace std;
 	using namespace AlgorithmDesigns;
 
+	AlgorithmTests::NoiUnitTest();
 	//AlgorithmTests::TopKUnitTest();
 	//AlgorithmTests::TopKStandardTest();
+
+	//AlgorithmTests::AccumulateNumbersFunctionalityTest();
 
 	// Keep the console window open in debug mode.
 	system("pause");

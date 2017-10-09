@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "UnitTest.h"
 #include "TopK.h"
+#include "AccumlateNumbers.h"
 
 namespace AlgorithmDesigns
 {
@@ -146,5 +147,13 @@ namespace AlgorithmDesigns
 
 		// Test the TopK algorithm.
 		AlgorithmTests::TopKFunctionalityTest(TestOption::SpecifiedArray, testData, length, k);
+	}
+
+	void AlgorithmTests::AccumulateNumbersFunctionalityTest()
+	{
+		using namespace std;
+		cout << "Query for cases that there are 4 and 25 pegs" << endl;
+		AccumlateNumbers an(50);
+		cout << an.MaxNumbers(4) << " " << an.MaxNumbers(25) << endl;
 	}
 }
