@@ -24,31 +24,13 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MySqlConnectionTest.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MySqlConnection.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MySqlManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DataAccess.cpp">
+    <ClCompile Include="Startup.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MySqlConnectionTest.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MySqlConnection.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="C:\Program Files\MySQL\MySQL Server 5.7\lib\libmysql.lib" />
   </ItemGroup>
 </Project>
