@@ -9,7 +9,7 @@ namespace FundamentalAlgorithms
 		class CollectionTests
 		{
 		private:
-			static void PrintString(const string & s);
+			static void PrintString(const std::string & s);
 
 		public:
 			static void LinkedListFunctionalityTest();

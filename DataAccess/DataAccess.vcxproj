@@ -153,6 +153,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MySqlCommand.h" />
     <ClInclude Include="MySqlConnection.h" />
     <ClInclude Include="MySqlConnectionTest.h" />
     <ClInclude Include="MySqlManager.h" />
@@ -161,8 +162,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataAccess.cpp" />
+    <ClCompile Include="MySqlCommand.cpp" />
     <ClCompile Include="MySqlConnection.cpp" />
     <ClCompile Include="MySqlConnectionTest.cpp" />
+    <ClCompile Include="MySqlManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -172,6 +175,11 @@
   </ItemGroup>
   <ItemGroup>
     <Library Include="C:\Program Files\MySQL\MySQL Server 5.7\lib\libmysql.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FundamentalAlgorithms\FundamentalAlgorithms.vcxproj">
+      <Project>{9fa43de7-5f10-4fc8-b1b5-c1fcd26f5782}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

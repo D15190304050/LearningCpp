@@ -7,7 +7,7 @@ namespace FundamentalAlgorithms
 {
 	namespace Collections
 	{
-		void CollectionTests::PrintString(const string & s)
+		void CollectionTests::PrintString(const std::string & s)
 		{
 			using namespace std;
 			cout << s << " ";

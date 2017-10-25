@@ -28,9 +28,7 @@ namespace DataAccess
 
 			void Close();
 
-			static void InitializeEnvironment();
-
-			static void EndEnvironment();
+			MYSQL & GetConnection() { return conn; }
 		};
 	}
 }

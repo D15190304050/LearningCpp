@@ -12,7 +12,9 @@ namespace DataAccess
 			~MySqlManager() {}
 
 		public:
+			static void InitializeEnvironment();
 
+			static void EndEnvironment();
 		};
 	}
 }

@@ -5,8 +5,6 @@ namespace FundamentalAlgorithms
 {
 	namespace Collections
 	{
-		using namespace std;
-
 		// The LinkedList class represents a doubly linked list.
 		// T is a generic type.
 		template<class T>
@@ -137,7 +135,7 @@ namespace FundamentalAlgorithms
 			{
 				// Throw the runtime_error if this linked list is empty when being called.
 				if (count == 0)
-					throw runtime_error("There is no item in this linked list now.");
+					throw std::runtime_error("There is no item in this linked list now.");
 
 				// Get the node to remove.
 				Node * toRemove = first;
@@ -165,7 +163,7 @@ namespace FundamentalAlgorithms
 			{
 				// Throw the runtime_error if this linked list is empty when being called.
 				if (count == 0)
-					throw runtime_error("There is no item in this linked list now.");
+					throw std::runtime_error("There is no item in this linked list now.");
 
 				// Get the node to remove.
 				Node * toRemove = last;

@@ -15,8 +15,9 @@ int main()
 	
 	//SortTest::QuickSortFunctionalityTest();
 	//SortTest::MinPQFunctionalityTest();
-	SortTest::InsertionSortFunctionalityTest();
-	SortTest::MergeSortFunctionalityTest();
+	//SortTest::InsertionSortFunctionalityTest();
+	//SortTest::MergeSortFunctionalityTest();
+	FundamentalAlgorithms::Collections::CollectionTests::LinkedListFunctionalityTest();
 
 	// Keep the console window open in debug mode.
 	system("pause");

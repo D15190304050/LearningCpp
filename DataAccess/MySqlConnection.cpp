@@ -6,15 +6,6 @@ namespace DataAccess
 {
 	namespace MySql
 	{
-		void MySqlConnection::InitializeEnvironment()
-		{
-			using namespace std;
-
-			// Initialize the environment for database access with default (0, nullptr, nullptr) settings.
-			// Throws runtime_error if an error occur when initialization.
-			if (0 != mysql_library_init(0, nullptr, nullptr))
-				throw runtime_error("Error occured when initializing the MySQL environment.");
-		}
 
 		MySqlConnection::MySqlConnection(std::string connectionString)
 		{
@@ -53,11 +44,6 @@ namespace DataAccess
 		{
 			closed = true;
 			mysql_close(&conn);
-		}
-
-		void MySqlConnection::EndEnvironment()
-		{
-			mysql_server_end();
 		}
 	}
 }
