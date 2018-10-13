@@ -1,4 +1,5 @@
 #include "Chessboard.h"
+#include <stdexcept>
 
 namespace TicTacToe
 {
@@ -33,6 +34,8 @@ namespace TicTacToe
 
     bool Chessboard::AddChessPiece(int rowNumber, int columnNumber, ChessPieceType chessPieceType)
     {
+        // Array index check is ignored here, will be added in the future.
+
         if (chessboard[rowNumber][columnNumber] == ChessPieceType::Empty)
         {
             chessboard[rowNumber][columnNumber] = chessPieceType;
