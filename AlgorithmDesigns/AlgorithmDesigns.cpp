@@ -19,6 +19,6 @@ int main()
 	//AlgorithmTests::AccumulateNumbersFunctionalityTest();
 
 	// Keep the console window open in debug mode.
-	//system("pause");
+	system("pause");
     return 0;
 }
