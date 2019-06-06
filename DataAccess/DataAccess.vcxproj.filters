@@ -57,7 +57,4 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Library Include="C:\Program Files\MySQL\MySQL Server 5.7\lib\libmysql.lib" />
-  </ItemGroup>
 </Project>

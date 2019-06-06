@@ -5,7 +5,7 @@ int main()
 {
 	using namespace DataAccess::MySql;
 
-	MySqlConnectionTest::ConnectionTest();
+	//MySqlConnectionTest::ConnectionTest();
 	
 	// Keep the console window open in debug mode.
 	system("pause");
