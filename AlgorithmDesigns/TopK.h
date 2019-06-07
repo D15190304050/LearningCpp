@@ -1,11 +1,11 @@
 #pragma once
 #include "stdafx.h"
-#include "..\FundamentalAlgorithms\StdRandom.h"
-#include "..\FundamentalAlgorithms\Quick.h"
-#include "..\FundamentalAlgorithms\MinPriorityQueue.h"
-#include "..\FundamentalAlgorithms\Merge.h"
+#include "..\DataWorks\StdRandom.h"
+#include "..\DataWorks\Quick.h"
+#include "..\DataWorks\MinPriorityQueue.h"
+#include "..\DataWorks\Merge.h"
 
-using namespace FundamentalAlgorithms;
+using namespace DataWorks;
 
 namespace AlgorithmDesigns
 {
@@ -98,7 +98,7 @@ namespace AlgorithmDesigns
 		template<class T>
 		T * PartitionBasedExtraction(T data[], int length, int k)
 		{
-			using namespace FundamentalAlgorithms::Sort;
+			using namespace DataWorks::Sort;
 
 			// Check length before processing.
 			LengthCheck(length, k);
@@ -152,7 +152,7 @@ namespace AlgorithmDesigns
 		template<class T>
 		T * SortBasedExtraction(T data[], int length, int k)
 		{
-			using namespace FundamentalAlgorithms::Sort;
+			using namespace DataWorks::Sort;
 
 			// Check the length before processing.
 			LengthCheck(length, k);
@@ -177,7 +177,7 @@ namespace AlgorithmDesigns
 		template<class T>
 		T * MinPQBasedExtraction(T data[], int length, int k)
 		{
-			using namespace FundamentalAlgorithms::Sort;
+			using namespace DataWorks::Sort;
 
 			// Check the length before processing.
 			LengthCheck(length, k);
@@ -233,7 +233,7 @@ namespace AlgorithmDesigns
 		template<class T>
 		T * MinPQBasedExtraction2(T data[], int length, int k)
 		{
-			using namespace FundamentalAlgorithms::Sort;
+			using namespace DataWorks::Sort;
 
 			// Check the length before processing.
 			LengthCheck(length, k);

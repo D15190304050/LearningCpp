@@ -1,7 +1,7 @@
 //#pragma once
 //#include "stdafx.h"
 //#include "MySqlConnection.h"
-//#include "..\FundamentalAlgorithms\LinkedList.h"
+//#include "..\DataWorks\LinkedList.h"
 //
 //namespace DataAccess
 //{
@@ -21,7 +21,7 @@
 //
 //			MySqlCommand(std::string & cmdText, MySqlConnection & conn) : CommandText(cmdText), conn(conn) {}
 //
-//			FundamentalAlgorithms::Collections::LinkedList<std::string> ExecuteReader();
+//			DataWorks::Collections::LinkedList<std::string> ExecuteReader();
 //
 //			int ExecuteNonQuery();
 //		};

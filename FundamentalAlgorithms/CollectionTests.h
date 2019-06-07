@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "LinkedList.h"
 
-namespace FundamentalAlgorithms
+namespace DataWorks
 {
 	namespace Collections
 	{

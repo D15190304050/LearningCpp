@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "SortBase.h"
 
-namespace FundamentalAlgorithms
+namespace DataWorks
 {
 	namespace Sort
 	{

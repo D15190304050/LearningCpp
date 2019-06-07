@@ -4,7 +4,7 @@
 #include "Insertion.h"
 #include "Merge.h"
 
-namespace FundamentalAlgorithms
+namespace DataWorks
 {
 	namespace Sort
 	{

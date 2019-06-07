@@ -17,4 +17,4 @@
 #include <string>
 #include <cmath>
 #include <stdexcept>
-#include "..\FundamentalAlgorithms\StdRandom.h"
+#include "..\DataWorks\StdRandom.h"

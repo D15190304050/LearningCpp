@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include <ctime>
 
-namespace FundamentalAlgorithms
+namespace DataWorks
 {
 	// The StdRandom class provides static methods for generating pseudo-random number for various descrete and coutinuous distributions.
 	// It also provides method for shuffling an array or sub-array.

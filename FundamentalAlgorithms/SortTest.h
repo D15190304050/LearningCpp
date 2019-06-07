@@ -3,7 +3,7 @@
 #include "Quick.h"
 #include "MinPriorityQueue.h"
 
-namespace FundamentalAlgorithms
+namespace DataWorks
 {
 	namespace Sort
 	{

@@ -29,7 +29,7 @@ namespace AlgorithmDesigns
 
 	void AlgorithmTests::NoiUnitTest()
 	{
-		using namespace FundamentalAlgorithms;
+		using namespace DataWorks;
 
 		// Test with default settings.
 		NoiFunctionalityTest();
@@ -48,7 +48,7 @@ namespace AlgorithmDesigns
 	void AlgorithmTests::TopKFunctionalityTest(TestOption option, int specifiedArray[], int length, int k)
 	{
 		using namespace std;
-		using namespace FundamentalAlgorithms::Sort;
+		using namespace DataWorks::Sort;
 
 		// Initialize a TopK solver.
 		TopK topk;

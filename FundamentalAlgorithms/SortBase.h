@@ -1,6 +1,6 @@
 #pragma once
 
-namespace FundamentalAlgorithms
+namespace DataWorks
 {
 	namespace Sort
 	{

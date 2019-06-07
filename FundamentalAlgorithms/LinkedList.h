@@ -1,10 +1,61 @@
 #pragma once
 #include <stdexcept>
+#include <iterator>
+#include <iostream>
+#include "LinkedListNode.h"
 
-namespace FundamentalAlgorithms
+namespace DataWorks
 {
 	namespace Collections
 	{
+		template<class T>
+		class LinkedListIterator : public std::iterator<std::input_iterator_tag, T>
+		{
+		private:
+			LinkedListNode<T>* current;
+
+		public:
+			// Constructor.
+			LinkedListIterator(LinkedListNode<T>* node) : current(node) {}
+
+			// Assignment.
+			LinkedListIterator& operator = (const LinkedListIterator& iterator)
+			{
+				current = iterator.current;
+				return *this;
+			}
+
+			// Unequal.
+			bool operator != (const LinkedListIterator& iterator)
+			{
+				return current != iterator.current;
+			}
+
+			// Equal.
+			bool operator == (const LinkedListIterator& iterator)
+			{
+				return current = iterator.current;
+			}
+
+			// Prefix-increment.
+			LinkedListIterator& operator++()
+			{
+				current = current->next;
+			}
+
+			// Suffix-increment.
+			LinkedListIterator& operator++(int)
+			{
+				current = current->next;
+			}
+
+			// Get value.
+			T& operator * ()
+			{
+				return current->data;
+			}
+		};
+
 		// The LinkedList class represents a doubly linked list.
 		// T is a generic type.
 		template<class T>
@@ -12,37 +63,20 @@ namespace FundamentalAlgorithms
 		{
 		private:
 			// The Node class represents a node with 2 links (previous and next) in linked list.
-			class Node
-			{
-			public:
-				// The data stored in this node.
-				T data;
-
-				// The next node of this node.
-				Node * next;
-
-				// The previous node of this node.
-				Node * previous;
-
-				// Initializes a new node that stroes the specified item.
-				Node(T & t)
-				{
-					data = t;
-					next = nullptr;
-					previous = nullptr;
-				}
-			};
+			
 
 			// The first node of this linked list.
-			Node * first;
+			LinkedListNode<T>* first;
 
 			// The last node of this linked list.
-			Node * last;
+			LinkedListNode<T>* last;
 
 			// A counter that contains the number of nodes (items) in this linked list.
 			int count;
 
 		public:
+			typedef LinkedListIterator<T> iterator;
+
 			// Initialize an empty LinkedList.
 			LinkedList()
 			{
@@ -55,13 +89,13 @@ namespace FundamentalAlgorithms
 			~LinkedList()
 			{
 				// Get the first node of this linked list.
-				Node * current = first;
+				LinkedListNode<T>* current = first;
 
 				// Loop until reach the end of this linked list.
 				while (current != nullptr)
 				{
 					// Get the current node and delete it later.
-					Node * temp = current;
+					LinkedListNode<T>* temp = current;
 
 					// Move to the next node.
 					current = current->next;
@@ -81,10 +115,10 @@ namespace FundamentalAlgorithms
 			// Adds a new node containing the specified data at the start of this linked list.
 			// T is a generic type.
 			// t : the item to add.
-			void AddFirst(T & t)
+			void AddFirst(T& t)
 			{
 				// Initialize a new node with specified data.
-				Node * toAdd = new Node(t);
+				LinkedListNode<T>* toAdd = new LinkedListNode<T>(t);
 
 				// If the linked list is empty, then the first and last point to the same node.
 				// Else, change the node reference.
@@ -107,10 +141,10 @@ namespace FundamentalAlgorithms
 			// Adds a new node containing the specified data at the end of this linked list.
 			// T is a generic type.
 			// t : the item to add.
-			void AddLast(T & t)
+			void AddLast(T& t)
 			{
 				// Initialize a new node with specified data.
-				Node * toAdd = new Node(t);
+				LinkedListNode<T>* toAdd = new LinkedListNode<T>(t);
 
 				// If the linked list is empty, then the first and last point to the same node.
 				// Else, change the node reference.
@@ -138,7 +172,7 @@ namespace FundamentalAlgorithms
 					throw std::runtime_error("There is no item in this linked list now.");
 
 				// Get the node to remove.
-				Node * toRemove = first;
+				LinkedListNode<T>* toRemove = first;
 
 				// Get the item to return.
 				// Make a deep copy here because the delete operation will release the data stored in the node.
@@ -166,7 +200,7 @@ namespace FundamentalAlgorithms
 					throw std::runtime_error("There is no item in this linked list now.");
 
 				// Get the node to remove.
-				Node * toRemove = last;
+				LinkedListNode<T>* toRemove = last;
 
 				// Get the item to return.
 				// Make a deep copy here because the delete operation will release the data stored in the node.
@@ -186,38 +220,14 @@ namespace FundamentalAlgorithms
 				return item;
 			}
 
-			// Traverses this linked list with specified function.
-			void Traverse(void(*pfun)(const T &))
+			iterator begin()
 			{
-				// Get the first node.
-				Node * current = first;
-
-				// Loop until reach the end of this linked list.
-				while (current != nullptr)
-				{
-					// Call the function.
-					pfun(current->data);
-
-					// Move to the next node.
-					current = current->next;
-				}
+				return iterator(first);
 			}
 
-			// Traverses this linked list reversely with specified function.
-			void TraverseReversely(void(*pfun)(const T &))
+			iterator end()
 			{
-				// Get the last node.
-				Node * current = last;
-
-				// Loop until reach the start of this linked list.
-				while (current != nullptr)
-				{
-					// Call the function.
-					pfun(current->data);
-
-					// Move to the previous node.
-					current = current->previous;
-				}
+				return iterator(last);
 			}
 		};
 	}

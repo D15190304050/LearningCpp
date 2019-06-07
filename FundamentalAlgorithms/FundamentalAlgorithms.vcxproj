@@ -147,8 +147,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="LinkedListNode.h" />
     <ClInclude Include="Merge.h" />
     <ClInclude Include="MinPriorityQueue.h" />
+    <ClInclude Include="Queue.h" />
     <ClInclude Include="Quick.h" />
     <ClInclude Include="Insertion.h" />
     <ClInclude Include="SortBase.h" />

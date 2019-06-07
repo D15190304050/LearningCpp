@@ -3,7 +3,7 @@
 #include "CollectionTests.h"
 #include "LinkedList.h"
 
-namespace FundamentalAlgorithms
+namespace DataWorks
 {
 	namespace Collections
 	{
@@ -21,9 +21,13 @@ namespace FundamentalAlgorithms
 			LinkedList<string> list;
 			for (int i = 0; i < 6; i++)
 				list.AddLast(strings[i]);
-			list.Traverse(PrintString);
+			//list.Traverse(PrintString);
+
+			for (LinkedList<string>::iterator i = list.begin(); i != list.end(); i++)
+				cout << *i << endl;
+
 			cout << endl;
-			list.TraverseReversely(PrintString);
+			//list.TraverseReversely(PrintString);
 			cout << endl;
 			cout << "The node count is: " << list.Count() << " now" << endl;
 

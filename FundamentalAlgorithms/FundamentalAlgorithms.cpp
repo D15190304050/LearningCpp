@@ -1,4 +1,4 @@
-// FundamentalAlgorithms.cpp: 定义控制台应用程序的入口点。
+// DataWorks.cpp: 定义控制台应用程序的入口点。
 //
 
 #include "stdafx.h"
@@ -11,13 +11,13 @@
 int main()
 {
 	using namespace std;
-	using namespace FundamentalAlgorithms::Sort;
+	using namespace DataWorks::Sort;
 	
 	//SortTest::QuickSortFunctionalityTest();
 	//SortTest::MinPQFunctionalityTest();
 	//SortTest::InsertionSortFunctionalityTest();
 	//SortTest::MergeSortFunctionalityTest();
-	FundamentalAlgorithms::Collections::CollectionTests::LinkedListFunctionalityTest();
+	//DataWorks::Collections::CollectionTests::LinkedListFunctionalityTest();
 
 	// Keep the console window open in debug mode.
 	system("pause");
