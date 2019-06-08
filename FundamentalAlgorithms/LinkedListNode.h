@@ -17,6 +17,8 @@ namespace DataWorks
 				next = nullptr;
 				previous = nullptr;
 			}
+
+			virtual ~LinkedListNode() {}
 		};
 	}
 }

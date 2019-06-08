@@ -41,12 +41,15 @@ namespace DataWorks
 			LinkedListIterator& operator++()
 			{
 				current = current->next;
+				return *this;
 			}
 
 			// Suffix-increment.
-			LinkedListIterator& operator++(int)
+			LinkedListIterator operator++(int)
 			{
+				LinkedListIterator tmp = *this;
 				current = current->next;
+				return tmp;
 			}
 
 			// Get value.

@@ -7,6 +7,7 @@
 #include "FunctionalityTest.h"
 #include "Quick.h"
 #include "SortTest.h"
+#include "List.h"
 
 int main()
 {
@@ -17,7 +18,14 @@ int main()
 	//SortTest::MinPQFunctionalityTest();
 	//SortTest::InsertionSortFunctionalityTest();
 	//SortTest::MergeSortFunctionalityTest();
-	//DataWorks::Collections::CollectionTests::LinkedListFunctionalityTest();
+	DataWorks::Collections::CollectionTests::LinkedListFunctionalityTest();
+
+	//List<int> list(100);
+	//for (int i = 0; i < 20; i++)
+	//	list.Add(i);
+
+	//for (List<int>::iterator i = list.begin(); i != list.end(); i++)
+	//	cout << *i << endl;
 
 	// Keep the console window open in debug mode.
 	system("pause");
