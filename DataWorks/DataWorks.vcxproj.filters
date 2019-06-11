@@ -129,15 +129,6 @@
     <ClInclude Include="TimeSpan.h">
       <Filter>Time</Filter>
     </ClInclude>
-    <ClInclude Include="IndexOutOfRangeException.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ArgumentOutOfRangeException.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="InvalidOperationException.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="collections.h">
       <Filter>Collections</Filter>
     </ClInclude>
@@ -150,5 +141,22 @@
     <ClInclude Include="Iterator.h">
       <Filter>Collections</Filter>
     </ClInclude>
+    <ClInclude Include="ArgumentOutOfRangeException.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexOutOfRangeException.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="InvalidOperationException.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="ArgumentNullException.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Program.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
