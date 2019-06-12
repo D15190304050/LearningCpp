@@ -3,6 +3,7 @@
 #include <iterator>
 #include <exception>
 #include "InvalidOperationException.h"
+#include "ArgumentNullException.h"
 
 namespace DataWorks
 {
@@ -40,7 +41,7 @@ namespace DataWorks
 			public void SetList(const LinkedList<T> * list)
 			{
 				if (list == nullptr)
-					throw
+					throw ArgumentNullException("The argument \"list\" cannot be null.");
 
 				if (this->list == nullptr)
 					this->list = list;
