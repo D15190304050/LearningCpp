@@ -33,8 +33,8 @@ namespace DataWorks
 				Invalidate();
 			}
 
-			public LinkedListNode<T> * Next() const { return next; }
-			public LinkedListNode<T> * Previous() const { return previous; }
+			public LinkedListNode<T>* Next() const { return next; }
+			public LinkedListNode<T>* Previous() const { return previous; }
 			public T& GetValue() const { return value; }
 			public void SetValue(const T& value) { this->value = value; }
 			public LinkedList<T>* GetList() { return list; }
@@ -81,20 +81,20 @@ namespace DataWorks
 			// Assignment.
 			LinkedListIterator& operator = (const LinkedListIterator& iterator)
 			{
-				current = iterator.current;
+				current = iterator->current;
 				return *this;
 			}
 
 			// Unequal.
 			bool operator != (const LinkedListIterator& iterator)
 			{
-				return current != iterator.current;
+				return current != iterator->current;
 			}
 
 			// Equal.
 			bool operator == (const LinkedListIterator& iterator)
 			{
-				return current = iterator.current;
+				return current = iterator->current;
 			}
 
 			// Prefix-increment.
@@ -221,10 +221,141 @@ namespace DataWorks
 			LinkedListNode<T>* First()const { return head; }
 			LinkedListNode<T>* Last()const { return head == nullptr ? head : head->previous; }
 
-			void AddAfter(LinkedListNode<T>* node, const T& value);
-			void AddAfter(LinkedListNode<T>* node, LinkedListNode<T>* newNode);
+			LinkedListNode<T>* AddAfter(LinkedListNode<T>* node, const T& value)
+			{
+				ValidateNode(node);
+				LinkedListNode<T>* result = new LinkedListNode<T>(this, value);
+				InternalInsertNodeBefore(node->next, result);
+				return result;
+			}
 
-			void AddLast(const& value);
+			void AddAfter(LinkedListNode<T>* node, LinkedListNode<T>* newNode)
+			{
+				ValidateNode(node);
+				ValidateNewNode(newNode);
+				InternalInsertNodeBefore(node->Next(), newNode);
+				newNode->SetList(this);
+			}
+
+			LinkedListNode<T>* AddBefore(LinkedListNode<T>* node, const T& value)
+			{
+				ValidateNode(node);
+				LinkedListNode<T>* result = new LinkedListNode<T>(node->list, value);
+				InternalInsertNodeBefore(node, result);
+				if (node == head)
+					head = result;
+
+				return result;
+			}
+
+			void AddBefore(LinkedListNode<T>* node, LinkedListNode<T>* newNode)
+			{
+				ValidateNode(node);
+				ValidateNewNode(newNode);
+				InternalInsertNodeBefore(node, newNode);
+				node->list = this;
+				if (node == head)
+					head = newNode;
+			}
+
+			LinkedListNode<T>* AddFirst(const T& value)
+			{
+				LinkedListNode<T>* result = new LinkedListNode<T>(this, value);
+				if (head == nullptr)
+					InternalInsertNodeToEmptyList(result);
+				else
+				{
+					InternalInsertNodeBefore(head, result);
+					head = result;
+				}
+
+				return result;
+			}
+
+			void AddFirst(LinkedListNode<T>* node)
+			{
+				ValidateNewNode(node);
+
+				if (head == nullptr)
+					InternalInsertNodeToEmptyList(node);
+				else
+				{
+					InternalInsertNodeBefore(head, node);
+					head = node;
+				}
+
+				node->list = this;
+			}
+
+			LinkedListNode<T>* AddLast(const& value)
+			{
+				LinkedListNode<T>* result = new LinkedListNode<T>(this, value);
+				if (head == nullptr)
+					InternalInsertNodeToEmptyList(result);
+				else
+					InternalInsertNodeBefore(head, result);
+
+				return result;
+			}
+
+			void AddLast(LinkedListNode<T>* node)
+			{
+				ValidateNode(node);
+
+				if (head == nullptr)
+					InternalInsertNodeToEmptyList(node);
+				else
+					InternalInsertNodeBefore(head, node);
+
+				node->list = this;
+			}
+
+			void Clear()
+			{
+				LinkedListNode<T>* current = head;
+				while (current != nullptr)
+				{
+					LinkedListNode<T>* temp = current;
+					current = current->next;
+					temp->Invalidate();
+					delete temp;
+				}
+
+				head = nullptr;
+				count = 0;
+				version++;
+			}
+
+			// Note: This method use operator= to test if 2 values are equal.
+			LinkedListNode<T>* Find(const T& value)
+			{
+				LinkedListNode<T>* current = head;
+				if (current != nullptr)
+				{
+					if (value != nullptr)
+					{
+						do
+						{
+							if (current->value == value)
+								return current;
+							current = current->next;
+						}
+						while (current != head);
+					}
+					else
+					{
+						do
+						{
+							if (current->value == nullptr)
+								return current;
+							current = current->next;
+						}
+						while (current != head);
+					}
+				}
+
+				return nullptr;
+			}
 		};
 	}
 }
