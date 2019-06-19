@@ -124,6 +124,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ArgumentException.h" />
     <ClInclude Include="ArgumentNullException.h" />
     <ClInclude Include="ArgumentOutOfRangeException.h" />
     <ClInclude Include="BinaryReader.h" />

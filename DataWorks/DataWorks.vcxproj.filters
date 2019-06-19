@@ -153,6 +153,9 @@
     <ClInclude Include="ArgumentNullException.h">
       <Filter>Common</Filter>
     </ClInclude>
+    <ClInclude Include="ArgumentException.h">
+      <Filter>Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Program.cpp">

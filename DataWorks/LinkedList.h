@@ -4,148 +4,151 @@
 #include <exception>
 #include "InvalidOperationException.h"
 #include "ArgumentNullException.h"
+#include "ArgumentOutOfRangeException.h"
+#include "ArgumentException.h"
 
 namespace DataWorks
 {
 	namespace Collections
 	{
 		template<class T>
-		class LinkedListNode
-		{
-		private:
-			LinkedList<T>* list;
-			LinkedListNode<T>* previous;
-			LinkedListNode<T>* next;
-			T value;
-
-		public:
-			LinkedListNode(const T& value) : value(value)
-			{
-				list = nullptr;
-				previous = nullptr;
-				next = nullptr;
-			}
-
-			LinkedListNode(const LinkedList<T>* list, const T& value) : list(list), value(value) {}
-
-			~LinkedListNode()
-			{
-				Invalidate();
-			}
-
-			public LinkedListNode<T>* Next() const { return next; }
-			public LinkedListNode<T>* Previous() const { return previous; }
-			public T& GetValue() const { return value; }
-			public void SetValue(const T& value) { this->value = value; }
-			public LinkedList<T>* GetList() { return list; }
-			public void SetList(const LinkedList<T>* list)
-			{
-				if (list == nullptr)
-					throw ArgumentNullException("The argument \"list\" cannot be null.");
-
-				if (this->list == nullptr)
-					this->list = list;
-				else
-					throw DataWorks::InvalidOperationException::InvalidOperationException("The LinkedList this LinkedListNode attached to can only be assigned once.");
-			}
-			public void Invalidate()
-			{
-				list = nullptr;
-				next = nullptr;
-				previous = nullptr;
-			}
-
-			public void SetPrevious(LinkedListNode<T>* previous)
-			{
-				this->previous = previous;
-			}
-
-			public void SetNext(LinkedListNode<T>* next)
-			{
-				this->next = next;
-			}
-
-			// TODO: overload operator=()
-		};
-
-		template<class T>
-		class LinkedListIterator : public std::iterator<std::input_iterator_tag, T>
-		{
-		private:
-			LinkedListNode<T>* current;
-
-		public:
-			// Constructor.
-			LinkedListIterator(LinkedListNode<T>* node) : current(node) {}
-
-			// Assignment.
-			LinkedListIterator& operator = (const LinkedListIterator& iterator)
-			{
-				current = iterator->current;
-				return *this;
-			}
-
-			// Unequal.
-			bool operator != (const LinkedListIterator& iterator)
-			{
-				return current != iterator->current;
-			}
-
-			// Equal.
-			bool operator == (const LinkedListIterator& iterator)
-			{
-				return current = iterator->current;
-			}
-
-			// Prefix-increment.
-			LinkedListIterator& operator++()
-			{
-				current = current->next;
-				return *this;
-			}
-
-			// Suffix-increment.
-			LinkedListIterator operator++(int)
-			{
-				LinkedListIterator tmp = *this;
-				current = current->next;
-				return tmp;
-			}
-
-			// Get value.
-			T& operator * ()
-			{
-				return current->data;
-			}
-		};
-
-		template<class T>
 		class LinkedList
 		{
 		private:
-			LinkedListNode<T>* head;
+			class LinkedListNode
+			{
+			private:
+				LinkedList* list;
+				LinkedListNode* previous;
+				LinkedListNode* next;
+				T value;
+
+			public:
+				explicit LinkedListNode(const T& value) : value(value)
+				{
+					list = nullptr;
+					previous = nullptr;
+					next = nullptr;
+				}
+
+				explicit LinkedListNode(const LinkedList* list, const T& value) : list(list), value(value) {}
+
+				~LinkedListNode()
+				{
+					Invalidate();
+				}
+
+				LinkedListNode* Next() const { return next; }
+				LinkedListNode* Previous() const { return previous; }
+				T& GetValue() const { return value; }
+				void SetValue(const T& value) { this->value = value; }
+				LinkedList* GetList() { return list; }
+				void SetList(const LinkedList* list)
+				{
+					if (list == nullptr)
+						throw ArgumentNullException("The argument \"list\" cannot be nullptr.");
+
+					if (this->list == nullptr)
+						this->list = list;
+					else
+						throw DataWorks::InvalidOperationException::InvalidOperationException("The LinkedList this LinkedListNode attached to can only be assigned once.");
+				}
+				void Invalidate()
+				{
+					list = nullptr;
+					next = nullptr;
+					previous = nullptr;
+				}
+
+				void SetPrevious(LinkedListNode* previous)
+				{
+					this->previous = previous;
+				}
+
+				void SetNext(LinkedListNode* next)
+				{
+					this->next = next;
+				}
+
+				// TODO: overload operator=() and Constructor().
+			};
+
+			class LinkedListIterator : public std::iterator<std::input_iterator_tag, T>
+			{
+			private:
+				LinkedListNode* current;
+				LinkedListNode* head;
+				bool moved;
+			public:
+				// Constructor.
+				LinkedListIterator(LinkedListNode* node, LinkedListNode* head) : current(node), head(head), moved(false) {}
+
+				// Assignment.
+				LinkedListIterator& operator = (const LinkedListIterator& iterator)
+				{
+					current = iterator->current;
+					return *this;
+				}
+
+				// Unequal.
+				bool operator != (const LinkedListIterator& iterator)
+				{
+					return current != iterator->current;
+				}
+
+				// Equal.
+				bool operator == (const LinkedListIterator& iterator)
+				{
+					return current == iterator->current;
+				}
+
+				// Prefix-increment.
+				LinkedListIterator& operator++()
+				{
+					moved = true;
+					current = current->next;
+					return *this;
+				}
+
+				// Suffix-increment.
+				LinkedListIterator operator++(int)
+				{
+					moved = true;
+					LinkedListIterator tmp = *this;
+					current = current->next;
+					return tmp;
+				}
+
+				// Get value.
+				T& operator * ()
+				{
+					return current->data;
+				}
+			};
+
+			LinkedListNode* head;
 			int count;
 			int version;
 
-			void ValidateNode(const LinkedListNode<T>* node)
+			void ValidateNode(const LinkedListNode* node)
 			{
 				if (node == nullptr)
-					throw ArgumentNullException("Argument \"node\" cannot be null.");
+					throw ArgumentNullException("Argument \"node\" cannot be nullptr.");
 
 				if (node->GetList() != this)
 					throw InvalidOperationException("The given \"node\" doesn't belong to the LinkedList.");
 			}
 
-			void ValidateNewNode(const LinkedListNode<T>* node)
+			void ValidateNewNode(const LinkedListNode* node)
 			{
 				if (node == nullptr)
-					throw ArgumentNullException("Argument \"node\" cannot be null.");
+					throw ArgumentNullException("Argument \"node\" cannot be nullptr.");
 
 				if (node->GetList() != nullptr)
 					throw ArgumentNullException("The given \"node\" doesn't belong to the LinkedList.");
 			}
 
-			void InternalInsertNodeBefore(LinkedListNode<T>* node, LinkedListNode<T>* newNode)
+			void InternalInsertNodeBefore(LinkedListNode* node, LinkedListNode* newNode)
 			{
 				newNode->SetNext(node);
 				newNode->SetPrevious(node->Previous());
@@ -155,9 +158,9 @@ namespace DataWorks
 				count++;
 			}
 
-			void InternalInsertNodeToEmptyList(LinkedListNode<T>* newNode)
+			void InternalInsertNodeToEmptyList(LinkedListNode* newNode)
 			{
-				if ((head != null) || (count != 0))
+				if ((head != nullptr) || (count != 0))
 					throw InvalidOperationException("LinkedList must be empty when this method is called!");
 
 				newNode->SetNext(newNode);
@@ -167,17 +170,17 @@ namespace DataWorks
 				count++;
 			}
 
-			void InternalRemoveNode(LinkedListNode<T>* node)
+			void InternalRemoveNode(LinkedListNode* node)
 			{
 				if (node->GetList() != this)
 					throw InvalidOperationException("Deleting the node from another list!");
-				if (head == null)
+				if (head == nullptr)
 					throw InvalidOperationException("This method shouldn't be called on empty list!");
 
 				if (node->Next() == node)
 				{
 					delete head;
-					head = null;
+					head = nullptr;
 				}
 				else
 				{
@@ -193,7 +196,7 @@ namespace DataWorks
 			}
 
 		public:
-			LinkedList() :head(nullptr) {}
+			explicit LinkedList() :head(nullptr) {}
 			virtual ~LinkedList()
 			{
 				if (count == 0)
@@ -218,18 +221,18 @@ namespace DataWorks
 			}
 
 			int Count()const { return count; }
-			LinkedListNode<T>* First()const { return head; }
-			LinkedListNode<T>* Last()const { return head == nullptr ? head : head->previous; }
+			LinkedListNode* First()const { return head; }
+			LinkedListNode* Last()const { return head == nullptr ? head : head->previous; }
 
-			LinkedListNode<T>* AddAfter(LinkedListNode<T>* node, const T& value)
+			LinkedListNode* AddAfter(LinkedListNode* node, const T& value)
 			{
 				ValidateNode(node);
-				LinkedListNode<T>* result = new LinkedListNode<T>(this, value);
+				LinkedListNode* result = new LinkedListNode(this, value);
 				InternalInsertNodeBefore(node->next, result);
 				return result;
 			}
 
-			void AddAfter(LinkedListNode<T>* node, LinkedListNode<T>* newNode)
+			void AddAfter(LinkedListNode* node, LinkedListNode* newNode)
 			{
 				ValidateNode(node);
 				ValidateNewNode(newNode);
@@ -237,10 +240,10 @@ namespace DataWorks
 				newNode->SetList(this);
 			}
 
-			LinkedListNode<T>* AddBefore(LinkedListNode<T>* node, const T& value)
+			LinkedListNode* AddBefore(LinkedListNode* node, const T& value)
 			{
 				ValidateNode(node);
-				LinkedListNode<T>* result = new LinkedListNode<T>(node->list, value);
+				LinkedListNode* result = new LinkedListNode(node->list, value);
 				InternalInsertNodeBefore(node, result);
 				if (node == head)
 					head = result;
@@ -248,7 +251,7 @@ namespace DataWorks
 				return result;
 			}
 
-			void AddBefore(LinkedListNode<T>* node, LinkedListNode<T>* newNode)
+			void AddBefore(LinkedListNode* node, LinkedListNode* newNode)
 			{
 				ValidateNode(node);
 				ValidateNewNode(newNode);
@@ -258,9 +261,9 @@ namespace DataWorks
 					head = newNode;
 			}
 
-			LinkedListNode<T>* AddFirst(const T& value)
+			LinkedListNode* AddFirst(const T& value)
 			{
-				LinkedListNode<T>* result = new LinkedListNode<T>(this, value);
+				LinkedListNode* result = new LinkedListNode(this, value);
 				if (head == nullptr)
 					InternalInsertNodeToEmptyList(result);
 				else
@@ -272,7 +275,7 @@ namespace DataWorks
 				return result;
 			}
 
-			void AddFirst(LinkedListNode<T>* node)
+			void AddFirst(LinkedListNode* node)
 			{
 				ValidateNewNode(node);
 
@@ -287,9 +290,9 @@ namespace DataWorks
 				node->list = this;
 			}
 
-			LinkedListNode<T>* AddLast(const& value)
+			LinkedListNode* AddLast(const& value)
 			{
-				LinkedListNode<T>* result = new LinkedListNode<T>(this, value);
+				LinkedListNode* result = new LinkedListNode(this, value);
 				if (head == nullptr)
 					InternalInsertNodeToEmptyList(result);
 				else
@@ -298,7 +301,7 @@ namespace DataWorks
 				return result;
 			}
 
-			void AddLast(LinkedListNode<T>* node)
+			void AddLast(LinkedListNode* node)
 			{
 				ValidateNode(node);
 
@@ -312,10 +315,10 @@ namespace DataWorks
 
 			void Clear()
 			{
-				LinkedListNode<T>* current = head;
+				LinkedListNode* current = head;
 				while (current != nullptr)
 				{
-					LinkedListNode<T>* temp = current;
+					LinkedListNode* temp = current;
 					current = current->next;
 					temp->Invalidate();
 					delete temp;
@@ -327,9 +330,9 @@ namespace DataWorks
 			}
 
 			// Note: This method use operator= to test if 2 values are equal.
-			LinkedListNode<T>* Find(const T& value)
+			LinkedListNode* Find(const T& value)
 			{
-				LinkedListNode<T>* current = head;
+				LinkedListNode* current = head;
 				if (current != nullptr)
 				{
 					if (value != nullptr)
@@ -355,6 +358,97 @@ namespace DataWorks
 				}
 
 				return nullptr;
+			}
+
+			// Note: This method use operator= to test if 2 values are equal.
+			LinkedListNode* FindLast(const T& value)
+			{
+				if (head == nullptr)
+					return nullptr;
+
+				LinkedListNode* last = head->previous;
+				LinkedListNode* current = last;
+
+				if (current != nullptr)
+				{
+					if (value != nullptr)
+					{
+						do
+						{
+							if (current->value == value)
+								return current;
+							current = current->previous;
+						}
+						while (current != last);
+					}
+					else
+					{
+						do
+						{
+							if (current->value == nullptr)
+								return current;
+							current = current->previous;
+						}
+						while (current != last);
+					}
+				}
+				return nullptr;
+			}
+
+			bool Contains(const T& value) const { return Find(value) != nullptr; }
+
+			void CopyTo(T* destArray, int length, int startIndex) const
+			{
+				if (destArray == nullptr)
+					throw ArgumentNullException("destArray");
+				if ((startIndex < 0) || (startIndex >= length))
+					throw ArgumentOutOfRangeException("startIndex");
+				if (length - startIndex < count)
+					throw ArgumentException("Insufficient space.");
+
+				LinkedListNode* current = head;
+				if (current != nullptr)
+				{
+					do
+					{
+						destArray[startIndex++] = current->value;
+						current = current->next;
+					}
+					while (current != head);
+				}
+			}
+
+			bool Remove(const T& value)
+			{
+				LinkedListNode* target = Find(value);
+				if (target != nullptr)
+				{
+					InternalRemoveNode(target);
+					return true;
+				}
+				return false;
+			}
+
+			void Remove(LinkedListNode* node)
+			{
+				ValidateNode(node);
+				InternalRemoveNode(node);
+			}
+
+			void RemoveFirst()
+			{
+				if (head == nullptr)
+					throw InvalidOperationException("Linked list is empty.");
+
+				InternalRemoveNode(head);
+			}
+
+			void RemoveLast()
+			{
+				if (head == nullptr)
+					throw InvalidOperationException("Linked list is empty.");
+
+				InternalRemoveNode(head->previous);
 			}
 		};
 	}
