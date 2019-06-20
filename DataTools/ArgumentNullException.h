@@ -3,7 +3,7 @@
 #include <exception>
 #include <string>
 
-namespace DataWorks
+namespace DataTools
 {
 	class ArgumentNullException : public std::runtime_error
 	{

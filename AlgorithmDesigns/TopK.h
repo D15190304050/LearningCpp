@@ -5,7 +5,7 @@
 #include "..\DataWorks\MinPriorityQueue.h"
 #include "..\DataWorks\Merge.h"
 
-using namespace DataWorks;
+using namespace DataTools;
 
 namespace AlgorithmDesigns
 {
@@ -98,7 +98,7 @@ namespace AlgorithmDesigns
 		template<class T>
 		T * PartitionBasedExtraction(T data[], int length, int k)
 		{
-			using namespace DataWorks::Sort;
+			using namespace DataTools::Sort;
 
 			// Check length before processing.
 			LengthCheck(length, k);
@@ -152,7 +152,7 @@ namespace AlgorithmDesigns
 		template<class T>
 		T * SortBasedExtraction(T data[], int length, int k)
 		{
-			using namespace DataWorks::Sort;
+			using namespace DataTools::Sort;
 
 			// Check the length before processing.
 			LengthCheck(length, k);
@@ -177,7 +177,7 @@ namespace AlgorithmDesigns
 		template<class T>
 		T * MinPQBasedExtraction(T data[], int length, int k)
 		{
-			using namespace DataWorks::Sort;
+			using namespace DataTools::Sort;
 
 			// Check the length before processing.
 			LengthCheck(length, k);
@@ -233,7 +233,7 @@ namespace AlgorithmDesigns
 		template<class T>
 		T * MinPQBasedExtraction2(T data[], int length, int k)
 		{
-			using namespace DataWorks::Sort;
+			using namespace DataTools::Sort;
 
 			// Check the length before processing.
 			LengthCheck(length, k);

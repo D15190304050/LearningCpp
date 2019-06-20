@@ -4,7 +4,7 @@
 #include <iostream>
 #include "LinkedListNode.h"
 
-namespace DataWorks
+namespace DataTools
 {
 	namespace Collections
 	{

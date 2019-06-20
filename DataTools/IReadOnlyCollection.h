@@ -3,7 +3,7 @@
 #include <iterator>
 #include "Iterator.h"
 
-namespace DataWorks
+namespace DataTools
 {
 	namespace Collections
 	{

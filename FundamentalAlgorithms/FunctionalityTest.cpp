@@ -3,11 +3,11 @@
 #include "StdRandom.h"
 #include "FunctionalityTest.h"
 
-namespace DataWorks
+namespace DataTools
 {
 	void FunctionalityTest::StdRandomFunctionalityTest()
 	{
-		using namespace DataWorks;
+		using namespace DataTools;
 		using namespace std;
 
 		cout << "Test for the shuffling operation:" << endl;

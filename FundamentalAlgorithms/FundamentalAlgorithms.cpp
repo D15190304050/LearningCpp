@@ -12,7 +12,7 @@
 int main()
 {
 	using namespace std;
-	using namespace DataWorks::Sort;
+	using namespace DataTools::Sort;
 	
 	//SortTest::QuickSortFunctionalityTest();
 	//SortTest::MinPQFunctionalityTest();

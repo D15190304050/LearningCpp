@@ -6,7 +6,7 @@
 int main()
 {
 	using namespace std;
-	using namespace DataWorks;
+	using namespace DataTools;
 
 	system("pause");
 	return 0;

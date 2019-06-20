@@ -14,7 +14,7 @@ namespace UnitTest
 
 		TEST_METHOD(TestMethod1)
 		{
-			using namespace DataWorks::Collections;
+			using namespace DataTools::Collections;
 			using namespace std;
 
 			LinkedList<int> list;
@@ -25,7 +25,7 @@ namespace UnitTest
 
 		TEST_METHOD(TestMethod2)
 		{
-			using namespace DataWorks::Sort;
+			using namespace DataTools::Sort;
 			using namespace std;
 
 			int x[] = { 5,7,9,6,3,4,5,1 };

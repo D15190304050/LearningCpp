@@ -3,7 +3,7 @@
 #include "CollectionTests.h"
 #include "LinkedList.h"
 
-namespace DataWorks
+namespace DataTools
 {
 	namespace Collections
 	{

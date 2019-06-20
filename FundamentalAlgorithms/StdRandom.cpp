@@ -4,7 +4,7 @@
 #include <ctime>
 #include <stdexcept>
 
-namespace DataWorks
+namespace DataTools
 {
 	int StdRandom::Uniform(int minValue, int maxValue)
 	{

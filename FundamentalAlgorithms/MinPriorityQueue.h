@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 
-namespace DataWorks
+namespace DataTools
 {
 	namespace Sort
 	{
