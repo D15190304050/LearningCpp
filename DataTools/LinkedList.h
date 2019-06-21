@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iterator>
+#include <iostream>
 #include <exception>
 #include "InvalidOperationException.h"
 #include "ArgumentNullException.h"
@@ -29,7 +30,7 @@ namespace DataTools
 			{
 			}
 
-			explicit LinkedListNode(const LinkedList<T>* list, const T& value) : list(list), value(value), previous(nullptr), next(nullptr)
+			explicit LinkedListNode(LinkedList<T>* list, const T& value) : list(list), value(value), previous(nullptr), next(nullptr)
 			{
 			}
 
@@ -66,7 +67,7 @@ namespace DataTools
 			// Unequal.
 			bool operator != (const LinkedListIterator& iterator)
 			{
-				return current != iterator->current;
+				return current != iterator.current;
 			}
 
 			// Equal.
@@ -93,7 +94,7 @@ namespace DataTools
 			// Get value.
 			T& operator * ()
 			{
-				return current->data;
+				return current->value;
 			}
 		};
 
@@ -126,16 +127,42 @@ namespace DataTools
 
 			void InternalInsertNodeBefore(LinkedListNode<T>* node, LinkedListNode<T>* newNode)
 			{
-				newNode->next = node;
-				node->previous = newNode;
+				if (node->previous != nullptr)
+				{
+					node->previous->next = newNode;
+					newNode->previous = node->previous;
+					newNode->next = node;
+					node->previous = newNode;
+				}
+				else
+				{
+					newNode->next = node;
+					node->previous = newNode;
+
+					first = newNode;
+				}
+
 				version++;
 				count++;
 			}
 
 			void InternalInsertNodeAfter(LinkedListNode<T>* node, LinkedListNode<T>* newNode)
 			{
-				node->next = newNode;
-				newNode->previous = node;
+				if (node->next != nullptr)
+				{
+					node->next->previous = newNode;
+					newNode->next = node->next;
+					newNode->previous = node;
+					node->next = newNode;
+				}
+				else
+				{
+					node->next = newNode;
+					newNode->previous = node;
+
+					last = newNode;
+				}
+				
 				version++;
 				count++;
 			}
@@ -146,6 +173,7 @@ namespace DataTools
 					throw InvalidOperationException("LinkedList must be empty when this method is called!");
 
 				first = newNode;
+				last = newNode;
 				version++;
 				count++;
 			}
@@ -157,8 +185,6 @@ namespace DataTools
 
 				if (count == 0)
 				{
-					delete first;
-					delete last;
 					first = nullptr;
 					last = nullptr;
 
@@ -177,6 +203,7 @@ namespace DataTools
 
 					count--;
 					version++;
+					TryEmptyList();
 				}
 			}
 
@@ -190,39 +217,40 @@ namespace DataTools
 			}
 
 		public:
-			explicit LinkedList() :first(nullptr) {}
+			typedef LinkedListIterator<T> iterator;
+			iterator begin()const { return iterator(first); }
+			iterator end()const { return iterator(nullptr); }
+
+			explicit LinkedList() :first(nullptr), last(nullptr), count(0), version(0) {}
 			virtual ~LinkedList()
 			{
-				if (count == 0)
-					delete first;
-				else
+				if (count != 0)
 				{
-					LinkedListNode<T>* last = first->previous;
 					LinkedListNode<T>* current = first;
 					LinkedListNode<T>* toRemove = nullptr;
 
-					while (current != last)
+					while (current != nullptr)
 					{
 						toRemove = current;
-						current = current->Next();
+						current = current->next;
 						delete toRemove;
 						toRemove = nullptr;
 					}
 
-					delete last;
-					delete first;
+					first = nullptr;
+					last = nullptr;
 				}
 			}
 
 			int Count()const { return count; }
 			LinkedListNode<T>* First()const { return first; }
-			LinkedListNode<T>* Last()const { return first == nullptr ? first : first->previous; }
+			LinkedListNode<T>* Last()const { return last; }
 
 			LinkedListNode<T>* AddAfter(LinkedListNode<T>* node, const T& value)
 			{
 				ValidateNode(node);
 				LinkedListNode<T>* result = new LinkedListNode<T>(this, value);
-				InternalInsertNodeBefore(node->next, result);
+				InternalInsertNodeAfter(node, result);
 
 				return result;
 			}
@@ -231,7 +259,7 @@ namespace DataTools
 			{
 				ValidateNode(node);
 				ValidateNewNode(newNode);
-				InternalInsertNodeBefore(node->next, newNode);
+				InternalInsertNodeAfter(node, newNode);
 			}
 
 			LinkedListNode<T>* AddBefore(LinkedListNode<T>* node, const T& value)
@@ -283,7 +311,10 @@ namespace DataTools
 				if (first == nullptr)
 					InternalInsertNodeToEmptyList(result);
 				else
-					InternalInsertNodeBefore(first, result);
+				{
+					InternalInsertNodeAfter(last, result);
+					last = result;
+				}
 
 				return result;
 			}
@@ -295,7 +326,10 @@ namespace DataTools
 				if (first == nullptr)
 					InternalInsertNodeToEmptyList(node);
 				else
+				{
 					InternalInsertNodeAfter(last, node);
+					last = node;
+				}
 			}
 
 			void Clear()
