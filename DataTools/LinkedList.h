@@ -49,59 +49,70 @@ namespace DataTools
 		};
 
 		template<class T>
-		class LinkedListIterator : public std::iterator<std::input_iterator_tag, T>
-		{
-		private:
-			LinkedListNode<T>* current;
-		public:
-			// Constructor.
-			LinkedListIterator(LinkedListNode<T>* node) : current(node) {}
-
-			// Assignment.
-			LinkedListIterator& operator = (const LinkedListIterator& iterator)
-			{
-				current = iterator->current;
-				return *this;
-			}
-
-			// Unequal.
-			bool operator != (const LinkedListIterator& iterator)
-			{
-				return current != iterator.current;
-			}
-
-			// Equal.
-			bool operator == (const LinkedListIterator& iterator)
-			{
-				return current == iterator->current;
-			}
-
-			// Prefix-increment.
-			LinkedListIterator& operator++()
-			{
-				current = current->next;
-				return *this;
-			}
-
-			// Suffix-increment.
-			LinkedListIterator operator++(int)
-			{
-				LinkedListIterator tmp = *this;
-				current = current->next;
-				return tmp;
-			}
-
-			// Get value.
-			T& operator * ()
-			{
-				return current->value;
-			}
-		};
-
-		template<class T>
 		class LinkedList
 		{
 		private:
+			template<class T>
+			class LinkedListIterator : public std::iterator<std::input_iterator_tag, T>
+			{
+			private:
+				LinkedList<T>* list;
+				LinkedListNode<T>* current;
+				int version;
+
+				void ValidateVersion()
+				{
+					if (version != list->version)
+						throw InvalidOperationException("Modified LinkedList during iteration.");
+				}
+
+			public:
+				// Constructor.
+				LinkedListIterator(LinkedListNode<T>* node) : current(node) {}
+
+				// Assignment.
+				LinkedListIterator& operator = (const LinkedListIterator& iterator)
+				{
+					current = iterator->current;
+					return *this;
+				}
+
+				// Unequal.
+				bool operator != (const LinkedListIterator& iterator)
+				{
+					return current != iterator.current;
+				}
+
+				// Equal.
+				bool operator == (const LinkedListIterator& iterator)
+				{
+					return current == iterator->current;
+				}
+
+				// Prefix-increment.
+				LinkedListIterator& operator++()
+				{
+					void ValidateVersion();
+					current = current->next;
+					return *this;
+				}
+
+				// Suffix-increment.
+				LinkedListIterator operator++(int)
+				{
+					void ValidateVersion();
+					LinkedListIterator tmp = *this;
+					current = current->next;
+					return tmp;
+				}
+
+				// Get value.
+				T& operator * ()
+				{
+					return current->value;
+				}
+			};
+
 			LinkedListNode<T>* first;
 			LinkedListNode<T>* last;
 			int count;
@@ -198,7 +209,7 @@ namespace DataTools
 				else
 				{
 					node->next->previous = node->previous;
-					node->previous->next = node->Next;
+					node->previous->next = node->next;
 					delete node;
 
 					count--;
@@ -354,26 +365,13 @@ namespace DataTools
 				LinkedListNode<T>* current = first;
 				if (current != nullptr)
 				{
-					if (value != nullptr)
+					do
 					{
-						do
-						{
-							if (current->value == value)
-								return current;
-							current = current->next;
-						}
-						while (current != nullptr);
+						if (current->value == value)
+							return current;
+						current = current->next;
 					}
-					else
-					{
-						do
-						{
-							if (current->value == nullptr)
-								return current;
-							current = current->next;
-						}
-						while (current != nullptr);
-					}
+					while (current != nullptr);
 				}
 
 				return nullptr;
@@ -481,6 +479,15 @@ namespace DataTools
 				count--;
 				version++;
 				TryEmptyList();
+			}
+
+			template<class T>
+			friend std::ostream& operator<<(std::ostream& os, const LinkedList<T>& list)
+			{
+				for (LinkedListIterator<T> i = list.begin(); i != list.end(); i++)
+					os << *i << " ";
+
+				return os;
 			}
 		};
 	}
