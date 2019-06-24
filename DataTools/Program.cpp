@@ -50,6 +50,10 @@ int main()
 	list.Remove(list.First());
 	cout << list << endl;
 
+	// Test for FindLast().
+	LinkedListNode<int>* foundLast = list.FindLast(15);
+	cout << foundLast->previous->value << " " << foundLast->value << " " << foundLast->next->value << endl;
+
 	// Test for Clear().
 	list.Clear();
 	cout << list.Count() << endl;

@@ -52,13 +52,10 @@ namespace DataTools
 		class LinkedList
 		{
 		private:
-			template<class T>
 			class LinkedListIterator : public std::iterator<std::input_iterator_tag, T>
 			{
 			private:
-				LinkedList<T>* list;
 				LinkedListNode<T>* current;
-				int version;
 
 				void ValidateVersion()
 				{
@@ -67,8 +64,17 @@ namespace DataTools
 				}
 
 			public:
+				int version;
+				const LinkedList<T>* list;
+
 				// Constructor.
 				LinkedListIterator(LinkedListNode<T>* node) : current(node) {}
+
+				void SetList(LinkedList<T>* list)
+				{
+					this->list = list;
+					this->version = list->version;
+				}
 
 				// Assignment.
 				LinkedListIterator& operator = (const LinkedListIterator& iterator)
@@ -92,7 +98,7 @@ namespace DataTools
 				// Prefix-increment.
 				LinkedListIterator& operator++()
 				{
-					void ValidateVersion();
+					ValidateVersion();
 					current = current->next;
 					return *this;
 				}
@@ -100,7 +106,7 @@ namespace DataTools
 				// Suffix-increment.
 				LinkedListIterator operator++(int)
 				{
-					void ValidateVersion();
+					ValidateVersion();
 					LinkedListIterator tmp = *this;
 					current = current->next;
 					return tmp;
@@ -228,9 +234,23 @@ namespace DataTools
 			}
 
 		public:
-			typedef LinkedListIterator<T> iterator;
-			iterator begin()const { return iterator(first); }
-			iterator end()const { return iterator(nullptr); }
+			typedef LinkedListIterator iterator;
+
+			iterator begin() const
+			{
+				LinkedListIterator i = LinkedListIterator(first);
+				i.list = this;
+				i.version = this->version;
+				return i;
+			}
+
+			iterator end() const
+			{
+				iterator i = iterator(last);
+				i.list = this;
+				i.version = this->version;
+				return i;
+			}
 
 			explicit LinkedList() :first(nullptr), last(nullptr), count(0), version(0) {}
 			virtual ~LinkedList()
@@ -387,26 +407,13 @@ namespace DataTools
 
 				if (current != nullptr)
 				{
-					if (value != nullptr)
+					do
 					{
-						do
-						{
-							if (current->value == value)
-								return current;
-							current = current->previous;
-						}
-						while (current != nullptr);
+						if (current->value == value)
+							return current;
+						current = current->previous;
 					}
-					else
-					{
-						do
-						{
-							if (current->value == nullptr)
-								return current;
-							current = current->previous;
-						}
-						while (current != nullptr);
-					}
+					while (current != nullptr);
 				}
 				return nullptr;
 			}
@@ -481,10 +488,9 @@ namespace DataTools
 				TryEmptyList();
 			}
 
-			template<class T>
 			friend std::ostream& operator<<(std::ostream& os, const LinkedList<T>& list)
 			{
-				for (LinkedListIterator<T> i = list.begin(); i != list.end(); i++)
+				for (LinkedListIterator i = list.begin(); i != list.end(); i++)
 					os << *i << " ";
 
 				return os;

@@ -172,6 +172,9 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataTools\DataWorks.vcxproj">
+      <Project>{a7b3772f-e53a-47a7-ba15-edee4bd7bc8b}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\FundamentalAlgorithms\FundamentalAlgorithms.vcxproj">
       <Project>{9fa43de7-5f10-4fc8-b1b5-c1fcd26f5782}</Project>
     </ProjectReference>

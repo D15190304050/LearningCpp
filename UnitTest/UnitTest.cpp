@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../DataWorks/LinkedList.h"
-#include "../DataWorks/Merge.h"
+#include "../DataTools/LinkedList.h"
 #include <iostream>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -17,27 +16,16 @@ namespace UnitTest
 			using namespace DataTools::Collections;
 			using namespace std;
 
+			// Test for constructor.
 			LinkedList<int> list;
-			for (int i = 0; i < 5; i++)
+
+			// Test for AddLast() and operator<<().
+			for (int i = 0; i < 10; i++)
 				list.AddLast(i);
-			Assert::AreEqual(5, list.Count());
-		}
+			
 
-		TEST_METHOD(TestMethod2)
-		{
-			using namespace DataTools::Sort;
-			using namespace std;
-
-			int x[] = { 5,7,9,6,3,4,5,1 };
-			Merge::Sort(x, 8);
-			bool ascending = true;
-			for (int i = 0; i < 7; i++)
-			{
-				if (x[i] > x[i + 1])
-					ascending = false;
-			}
-
-			Assert::AreEqual(true, ascending);
+			// Test for Count().
+			Assert::AreEqual(10, list.Count());
 		}
 	};
 }
