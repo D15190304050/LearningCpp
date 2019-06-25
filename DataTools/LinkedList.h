@@ -70,12 +70,6 @@ namespace DataTools
 				// Constructor.
 				LinkedListIterator(LinkedListNode<T>* node) : current(node) {}
 
-				void SetList(LinkedList<T>* list)
-				{
-					this->list = list;
-					this->version = list->version;
-				}
-
 				// Assignment.
 				LinkedListIterator& operator = (const LinkedListIterator& iterator)
 				{
@@ -246,7 +240,7 @@ namespace DataTools
 
 			iterator end() const
 			{
-				iterator i = iterator(last);
+				iterator i = iterator(nullptr);
 				i.list = this;
 				i.version = this->version;
 				return i;
