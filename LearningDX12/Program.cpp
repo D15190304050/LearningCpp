@@ -2,7 +2,7 @@
 
 int main()
 {
-    //Vector3OperationDemo();
+    Vector3OperationDemo();
 
     system("pause");
     return 0;
